@@ -4,33 +4,121 @@
   <meta charset="UTF-8" />
   <title>Obscuron Void Labs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Obscuron Void Labs — building secure, intelligent, next-generation systems." />
   <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #12121a;
+      --text: #ffffff;
+      --muted: #b5b5c3;
+      --accent: #7c7cff;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 6rem 1.5rem 4rem;
       text-align: center;
     }
-    h1 {
-      font-size: 2.5rem;
+
+    header h1 {
+      font-size: 3rem;
       margin-bottom: 0.5rem;
     }
-    p {
-      color: #b5b5c3;
+
+    header p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
       font-size: 1.1rem;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid #1e1e2e;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--muted);
+      border-top: 1px solid #1e1e2e;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div>
-    <h1>OBSCURON VOID LABS</h1>
-    <p>Engineering the unknown. Website coming soon.</p>
+
+<header>
+  <h1>Obscuron Void Labs</h1>
+  <p>Engineering secure, intelligent systems for the next generation of technology.</p>
+</header>
+
+<section>
+  <div class="grid">
+    <div class="card">
+      <h3>What We Do</h3>
+      <p>
+        We design and build high-performance software systems focused on security,
+        intelligence, and scalability.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Our Focus</h3>
+      <p>
+        AI systems, secure architectures, cloud platforms, and experimental technologies.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Why Obscuron</h3>
+      <p>
+        We operate at the edge of complexity — where reliability, privacy, and performance matter most.
+      </p>
+    </div>
   </div>
+</section>
+
+<footer>
+  <p>
+    © 2026 Obscuron Void Labs LLP<br />
+    <a href="mailto:contact@obscuronvoidlabs.com">contact@obscuronvoidlabs.com</a>
+  </p>
+</footer>
+
 </body>
 </html>
-
