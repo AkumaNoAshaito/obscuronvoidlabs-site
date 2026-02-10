@@ -6,45 +6,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
-html, body {
+/* RESET */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
   height: 100%;
-  background: #000;
-  font-family: system-ui, sans-serif;
+  background: black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: hidden;
 }
 
 /* VIDEO BACKGROUND */
-.video-bg {
+#bg-video {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   z-index: -2;
 }
 
-.video-bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 /* DARK OVERLAY */
-.overlay {
+#overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   z-index: -1;
 }
 
 /* CONTENT */
-.content {
+#content {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
-  padding: 1.5rem;
+  color: white;
+  padding: 2rem;
 }
 
 h1 {
@@ -53,7 +57,7 @@ h1 {
 }
 
 p {
-  max-width: 620px;
+  max-width: 600px;
   margin: 1rem auto 2rem;
   color: #cfd2ff;
   font-size: 1.1rem;
@@ -64,33 +68,46 @@ a {
   padding: 0.9rem 2rem;
   border-radius: 30px;
   background: #7c7cff;
-  color: #000;
+  color: black;
   text-decoration: none;
   font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(124,124,255,0.4);
 }
 </style>
 </head>
 
 <body>
 
-<!-- VIDEO BACKGROUND -->
-<div class="video-bg">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="bg.mp4" type="video/mp4">
-  </video>
-</div>
+<!-- VIDEO -->
+<video
+  id="bg-video"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+>
+  <source src="./bg.mp4" type="video/mp4" />
+</video>
 
 <!-- OVERLAY -->
-<div class="overlay"></div>
+<div id="overlay"></div>
 
 <!-- CONTENT -->
-<div class="content">
+<div id="content">
   <div>
     <h1>Obscuron Void Labs</h1>
     <p>
       Engineering intelligence beyond observable limits.
     </p>
-    <a href="mailto:contact@obscuronvoidlabs.com">Contact</a>
+    <a href="mailto:contact@obscuronvoidlabs.com">
+      Contact Us
+    </a>
   </div>
 </div>
 
