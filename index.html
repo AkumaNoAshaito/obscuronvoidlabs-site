@@ -3,8 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Obscuron Void Labs LLP – India-based deep-tech startup. ProxNet: BLE and Face ID attendance and access. Management SaaS for franchise and operations." />
-  <title>Obscuron Void Labs LLP | Smart Attendance &amp; Management Platforms</title>
+  <meta name="description" content="Obscuron Void Labs LLP – Deep-tech innovation lab. Intelligent systems, secure infrastructure, and next-generation automation. ProxNet: BLE and Face ID attendance. Enterprise-ready." />
+  <title>Obscuron Void Labs LLP | Deep-Tech Innovation Lab · Smart Attendance &amp; Infrastructure</title>
+  <!-- Canonical URL: update when deploying (e.g. https://obscuronvoidlabs.com) -->
+  <link rel="canonical" href="https://obscuronvoidlabs.com/" />
+  <!-- Favicon: multi-size and Apple touch -->
+  <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="Obscuron Void Labs Logo.png" />
+  <link rel="preload" href="Obscuron Void Labs Logo.png" as="image" />
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Obscuron Void Labs LLP | Deep-Tech Innovation Lab" />
+  <meta property="og:description" content="Intelligent systems, secure infrastructure, and next-generation automation. ProxNet: BLE and Face ID attendance. Enterprise-ready." />
+  <meta property="og:image" content="https://obscuronvoidlabs.com/Obscuron%20Void%20Labs%20Logo.png" />
+  <meta property="og:url" content="https://obscuronvoidlabs.com/" />
+  <meta property="og:site_name" content="Obscuron Void Labs LLP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Obscuron Void Labs LLP | Deep-Tech Innovation Lab" />
+  <meta name="twitter:description" content="Intelligent systems, secure infrastructure, and next-generation automation." />
+  <meta name="twitter:image" content="https://obscuronvoidlabs.com/Obscuron%20Void%20Labs%20Logo.png" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -25,8 +43,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" />
-  <link rel="preload" href="Obscuron Void Labs Logo.png" as="image" />
+  <!-- Organization structured data (JSON-LD) for Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Obscuron Void Labs LLP",
+    "url": "https://obscuronvoidlabs.com",
+    "logo": "https://obscuronvoidlabs.com/Obscuron%20Void%20Labs%20Logo.png",
+    "description": "Deep-tech innovation lab. Intelligent systems, secure infrastructure, and next-generation automation. ProxNet: BLE and Face ID attendance.",
+    "sameAs": [
+      "https://www.linkedin.com/company/obscuronvoidlabs",
+      "https://github.com/AkumaNoAshaito/obscuronvoidlabs-site"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "admin@obscuronvoidlabs.com",
+      "contactType": "customer service"
+    }
+  }
+  </script>
   <style>
     /* ===== Base & smooth scroll ===== */
     html { scroll-behavior: smooth; }
@@ -445,10 +481,15 @@
     }
 
     /* ===== OVL Splash: cinematic intro (Netflix-style) ===== */
-    body.ovl-splash-active { overflow: hidden !important; height: 100% !important; }
-    /* Hide all content until splash finishes – no flash of site */
+    html.ovl-splash-active,
+    body.ovl-splash-active {
+      overflow: hidden !important;
+      height: 100% !important;
+      position: relative;
+    }
+    /* Hide all content until splash finishes – no flash of site (desktop + mobile) */
     body.ovl-splash-active #void-layer,
-    body.ovl-splash-active .nav-glass,
+    body.ovl-splash-active header,
     body.ovl-splash-active main,
     body.ovl-splash-active #cursor-overlay {
       opacity: 0 !important;
@@ -463,13 +504,16 @@
     #ovl-splash {
       position: fixed;
       inset: 0;
-      z-index: 10000;
+      z-index: 2147483647;
       background-color: #050508;
       display: flex;
       align-items: center;
       justify-content: center;
       pointer-events: auto;
       -webkit-tap-highlight-color: transparent;
+      isolation: isolate;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
     .ovl-splash__inner { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
     .ovl-splash__logo {
@@ -502,6 +546,7 @@
       100% { opacity: 0; transform: scale(1); }
     }
   </style>
+  <script>document.documentElement.classList.add('ovl-splash-active');</script>
 </head>
 <body class="bg-void bg-grid text-white antialiased min-h-screen ovl-splash-active" id="body-el">
   <!-- ===== OVL Splash: cinematic intro (once per session) ===== -->
@@ -517,10 +562,12 @@
     var splash = document.getElementById('ovl-splash');
     var logo = splash && splash.querySelector('.ovl-splash__logo');
     var body = document.body;
+    var html = document.documentElement;
 
     function removeSplash() {
       if (!body.classList.contains('ovl-splash-active')) return;
       body.classList.remove('ovl-splash-active');
+      html.classList.remove('ovl-splash-active');
       try { sessionStorage.setItem(key, '1'); } catch (e) {}
       if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
     }
@@ -530,8 +577,18 @@
       return;
     }
 
+    html.classList.add('ovl-splash-active');
+
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (logo) logo.classList.add('ovl-splash__logo--animate');
+    function startAnimation() {
+      if (logo) logo.classList.add('ovl-splash__logo--animate');
+    }
+    if (logo && logo.complete) {
+      startAnimation();
+    } else if (logo) {
+      logo.addEventListener('load', startAnimation);
+      setTimeout(startAnimation, 100);
+    }
 
     if (prefersReducedMotion) {
       setTimeout(removeSplash, 500);
@@ -541,12 +598,14 @@
     function onDone() {
       removeSplash();
     }
-    splash.addEventListener('animationend', function handler(e) {
-      if (e.target !== logo) return;
-      splash.removeEventListener('animationend', handler);
-      onDone();
-    });
-    setTimeout(onDone, 2600);
+    if (splash && logo) {
+      splash.addEventListener('animationend', function handler(e) {
+        if (e.target !== logo) return;
+        splash.removeEventListener('animationend', handler);
+        onDone();
+      });
+    }
+    setTimeout(onDone, 2700);
   })();
   </script>
   <!-- ===== Void distortion layer (WebGL background) ===== -->
@@ -597,10 +656,7 @@
         </svg>
       </div>
       <div class="relative z-10 max-w-3xl mx-auto">
-        <div class="hero-logo-wrap mb-8">
-          <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="mx-auto h-12 sm:h-14 md:h-16 w-auto object-contain opacity-90" loading="eager" />
-        </div>
-        <p class="animate-in text-slate-500 text-xs font-medium tracking-[0.2em] uppercase mb-6">Deep-tech · India</p>
+        <p class="animate-in text-slate-500 text-xs font-medium tracking-[0.2em] uppercase mb-8">Deep-tech · India</p>
         <div class="hero-title-singularity mb-8">
           <h1 id="hero-title" class="sr-only">Obscuron Void Labs</h1>
           <img
