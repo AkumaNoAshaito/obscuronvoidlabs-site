@@ -346,6 +346,27 @@
     @keyframes hero-logo-fade {
       to { opacity: 1; }
     }
+    /* Hero main logo: replaces headline, responsive max-width, fade-in */
+    .hero-main-logo {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 75vw;
+      margin-left: auto;
+      margin-right: auto;
+      object-fit: contain;
+      opacity: 0;
+      animation: hero-logo-fade 0.9s ease-out 0.25s forwards;
+    }
+    @media (min-width: 640px) {
+      .hero-main-logo { max-width: min(65vw, 380px); }
+    }
+    @media (min-width: 768px) {
+      .hero-main-logo { max-width: min(55vw, 460px); }
+    }
+    @media (min-width: 1024px) {
+      .hero-main-logo { max-width: min(50vw, 520px); }
+    }
 
     /* Section scroll reveal: fade + rise */
     .section-reveal {
@@ -413,6 +434,7 @@
       .btn-secondary:hover { transform: none; }
       .brand-name:hover { letter-spacing: 0.14em; }
       .hero-logo-wrap { animation: none; opacity: 1; }
+      .hero-main-logo { animation: none; opacity: 1; }
     }
 
     /* Mobile: lighter animations for 60fps */
@@ -579,10 +601,14 @@
           <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="mx-auto h-12 sm:h-14 md:h-16 w-auto object-contain opacity-90" loading="eager" />
         </div>
         <p class="animate-in text-slate-500 text-xs font-medium tracking-[0.2em] uppercase mb-6">Deep-tech · India</p>
-        <div class="hero-title-singularity">
-          <h1 id="hero-title" class="animate-in delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight brand-name brand-name-hero">
-            Obscuron Void Labs
-          </h1>
+        <div class="hero-title-singularity mb-8">
+          <h1 id="hero-title" class="sr-only">Obscuron Void Labs</h1>
+          <img
+            src="Obscuron Void Labs Logo.png"
+            alt="Obscuron Void Labs"
+            class="hero-main-logo"
+            loading="eager"
+          />
         </div>
         <p class="animate-in delay-2 mt-8 text-xl sm:text-2xl text-slate-400 font-light leading-relaxed">
           Building intelligent systems, secure infrastructure, and next-generation automation.
