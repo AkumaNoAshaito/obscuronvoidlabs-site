@@ -480,14 +480,13 @@
       .hero-orb--1, .hero-orb--2, .hero-orb--3 { animation-duration: 25s; }
     }
 
-    /* ===== OVL Splash: cinematic intro (Netflix-style) ===== */
+    /* ===== OVL Splash: fullscreen video intro (standalone layer) ===== */
     html.ovl-splash-active,
     body.ovl-splash-active {
       overflow: hidden !important;
       height: 100% !important;
       position: relative;
     }
-    /* Hide all content until splash finishes – no flash of site (desktop + mobile) */
     body.ovl-splash-active #void-layer,
     body.ovl-splash-active header,
     body.ovl-splash-active main,
@@ -497,20 +496,17 @@
       pointer-events: none !important;
       transition: none !important;
     }
-    /* Smooth reveal after splash */
     #void-layer, header, main {
       transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
     }
     #ovl-splash {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
+      z-index: 2147483647;
       width: 100vw;
       height: 100vh;
-      height: 100dvh;
       min-width: 100%;
       min-height: 100%;
-      z-index: 2147483647;
       background-color: #050508;
       pointer-events: auto;
       -webkit-tap-highlight-color: transparent;
@@ -520,8 +516,15 @@
       transition: opacity 0.6s ease-out;
       overflow: hidden;
     }
-    @supports (min-height: 100dvh) {
-      #ovl-splash { min-height: 100dvh; }
+    @supports (height: 100dvh) {
+      #ovl-splash { height: 100dvh; min-height: 100dvh; }
+    }
+    @media (max-width: 768px) {
+      #ovl-splash {
+        height: 100vh;
+        height: 100dvh;
+        min-height: -webkit-fill-available;
+      }
     }
     #ovl-splash.ovl-splash--fade-out {
       opacity: 0;
@@ -529,10 +532,7 @@
     }
     .ovl-splash__inner {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -543,18 +543,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      min-width: 100%;
-      min-height: 100%;
       object-fit: cover;
       object-position: center center;
       display: block;
     }
     @media (max-width: 768px) {
-      #ovl-splash {
-        width: 100vw;
-        height: 100vh;
-        height: 100dvh;
-        min-height: -webkit-fill-available;
+      .ovl-splash__video {
+        object-fit: contain;
+        object-position: center center;
       }
     }
   </style>
@@ -601,8 +597,7 @@
 
     html.classList.add('ovl-splash-active');
 
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       removeSplash();
       return;
     }
@@ -618,9 +613,14 @@
     }
 
     if (video) {
+      video.muted = true;
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('muted', '');
       video.addEventListener('ended', onVideoEnd, { once: true });
       video.addEventListener('error', onVideoError, { once: true });
-      video.play().catch(function() { removeSplash(); });
+      var p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(function() { removeSplash(); });
     } else {
       removeSplash();
     }
