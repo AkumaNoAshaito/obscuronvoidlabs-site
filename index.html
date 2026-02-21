@@ -26,22 +26,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" />
+  <link rel="preload" href="Obscuron Void Labs Logo.png" as="image" />
   <style>
     /* ===== Base & smooth scroll ===== */
     html { scroll-behavior: smooth; }
     body { font-family: 'Outfit', system-ui, sans-serif; }
 
-    /* ===== Background: dark gradient + subtle grid ===== */
+    /* ===== Background: dark gradient + subtle grid (premium depth) ===== */
     .bg-void {
       background-color: #050508;
       background-image:
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 211, 238, 0.08), transparent),
-        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(167, 139, 250, 0.06), transparent),
+        radial-gradient(ellipse 100% 60% at 50% -10%, rgba(34, 211, 238, 0.04), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 85% 50%, rgba(167, 139, 250, 0.03), transparent 50%),
         linear-gradient(180deg, transparent 0%, rgba(5, 5, 8, 1) 100%);
     }
     .bg-grid {
-      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
       background-size: 64px 64px;
     }
 
@@ -60,8 +61,8 @@
       transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
     }
     .glass-card:hover {
-      border-color: rgba(34, 211, 238, 0.25);
-      box-shadow: 0 0 40px rgba(34, 211, 238, 0.08);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.04);
       transform: translateY(-2px);
     }
 
@@ -73,22 +74,24 @@
       50% { opacity: 1; }
     }
     .btn-primary {
-      background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(167, 139, 250, 0.2));
-      border: 1px solid rgba(34, 211, 238, 0.4);
-      transition: all 0.3s ease;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(34, 211, 238, 0.08));
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
     }
     .btn-primary:hover {
-      background: linear-gradient(135deg, rgba(34, 211, 238, 0.3), rgba(167, 139, 250, 0.3));
-      box-shadow: 0 0 24px rgba(34, 211, 238, 0.25);
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(34, 211, 238, 0.12));
+      border-color: rgba(34, 211, 238, 0.5);
+      box-shadow: 0 4px 24px rgba(34, 211, 238, 0.15), 0 0 0 1px rgba(34, 211, 238, 0.1);
     }
     .btn-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.04);
-      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
     }
     .btn-secondary:hover {
-      border-color: rgba(255, 255, 255, 0.35);
-      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     }
 
     /* ===== Section reveal animation (on load) ===== */
@@ -113,12 +116,19 @@
       box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1);
     }
 
-    /* ===== Navbar ===== */
+    /* ===== Navbar (premium glass) ===== */
     .nav-glass {
-      background: rgba(5, 5, 8, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(5, 5, 8, 0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .nav-glass a {
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    .nav-glass a:hover {
+      opacity: 1;
     }
 
     /* ===== Void cursor effect (desktop only) ===== */
@@ -186,28 +196,28 @@
 
     /* ===== Obscuron Void brand identity ===== */
 
-    /* Hero: singularity glow (soft cyan–violet behind title) */
+    /* Hero: subtle cinematic glow (premium, minimal) */
     .hero-singularity {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: min(90vw, 520px);
-      height: 280px;
+      width: min(95vw, 560px);
+      height: 320px;
       border-radius: 50%;
       background: radial-gradient(
         ellipse 100% 80% at 50% 50%,
-        rgba(34, 211, 238, 0.12) 0%,
-        rgba(167, 139, 250, 0.08) 35%,
+        rgba(34, 211, 238, 0.06) 0%,
+        rgba(167, 139, 250, 0.04) 40%,
         transparent 70%
       );
-      filter: blur(32px);
+      filter: blur(40px);
       pointer-events: none;
-      animation: singularity-pulse 8s ease-in-out infinite;
+      animation: singularity-pulse 10s ease-in-out infinite;
     }
     @keyframes singularity-pulse {
-      0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+      0%, 100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.03); }
     }
 
     /* Hero: floating ambient orbs (slow motion) */
@@ -277,13 +287,13 @@
     }
     .field-line {
       fill: none;
-      stroke: rgba(34, 211, 238, 0.12);
+      stroke: rgba(34, 211, 238, 0.06);
       stroke-width: 0.5;
       stroke-dasharray: 120 280;
       animation: field-line-flow 24s linear infinite;
     }
     .field-line:nth-child(even) {
-      stroke: rgba(167, 139, 250, 0.1);
+      stroke: rgba(167, 139, 250, 0.05);
       animation-duration: 28s;
       animation-direction: reverse;
     }
@@ -301,7 +311,7 @@
       .field-line { animation: none; }
     }
 
-    /* Hero title as central singularity: container + lens */
+    /* Hero title: clean container, minimal lens */
     .hero-title-singularity {
       position: relative;
       z-index: 2;
@@ -312,13 +322,29 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 140%;
-      height: 180%;
+      width: 120%;
+      height: 140%;
       transform: translate(-50%, -50%);
-      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(34, 211, 238, 0.06) 0%, transparent 65%);
-      filter: blur(20px);
+      background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(34, 211, 238, 0.03) 0%, transparent 65%);
+      filter: blur(24px);
       pointer-events: none;
       border-radius: 50%;
+    }
+    /* Hero: cinematic top lighting */
+    .hero-cinematic-light {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 25%, transparent 100%);
+    }
+    /* Hero logo: small, intentional, fade-in */
+    .hero-logo-wrap {
+      opacity: 0;
+      animation: hero-logo-fade 0.8s ease-out 0.2s forwards;
+    }
+    @keyframes hero-logo-fade {
+      to { opacity: 1; }
     }
 
     /* Section scroll reveal: fade + rise */
@@ -332,49 +358,45 @@
       transform: translateY(0);
     }
 
-    /* Magnetic button hover: inward pull + glow + smooth expansion */
+    /* Premium button hover: subtle scale + depth */
     .btn-primary,
     .btn-secondary {
       transform-origin: center;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
     }
     .btn-primary:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 32px rgba(34, 211, 238, 0.3), 0 0 48px rgba(167, 139, 250, 0.12);
+      transform: scale(1.03);
     }
     .btn-primary:active {
       transform: scale(0.98);
     }
     .btn-secondary:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
     }
     .btn-secondary:active {
       transform: scale(0.98);
     }
 
-    /* Brand typography: letter-spacing, gradient glow, hover */
+    /* Brand typography: premium, subtle gradient, minimal glow */
     .brand-name {
       display: inline-block;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       font-weight: 600;
-      background: linear-gradient(135deg, #fff 0%, rgba(34, 211, 238, 0.95) 50%, rgba(167, 139, 250, 0.9) 100%);
+      background: linear-gradient(135deg, #f8fafc 0%, rgba(226, 232, 240, 0.98) 45%, rgba(34, 211, 238, 0.9) 100%);
       background-size: 200% auto;
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      color: white;
-      transition: letter-spacing 0.3s ease, filter 0.3s ease;
+      color: #f8fafc;
+      transition: letter-spacing 0.3s ease, opacity 0.3s ease;
     }
     .brand-name:hover {
-      letter-spacing: 0.18em;
-      filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.35));
+      letter-spacing: 0.14em;
+      opacity: 0.95;
     }
     .brand-name-hero {
-      letter-spacing: 0.12em;
-      text-shadow:
-        0 0 40px rgba(34, 211, 238, 0.35),
-        0 0 80px rgba(167, 139, 250, 0.2);
+      letter-spacing: 0.1em;
+      line-height: 1.15;
+      text-shadow: 0 0 24px rgba(34, 211, 238, 0.08);
     }
 
     /* Cursor: keep subtle (already defined above) */
@@ -390,15 +412,32 @@
       .btn-primary:hover,
       .btn-secondary:hover { transform: none; }
       .brand-name:hover { letter-spacing: 0.14em; }
+      .hero-logo-wrap { animation: none; opacity: 1; }
     }
 
-    /* Mobile: disable parallax and heavy blur for performance */
+    /* Mobile: lighter animations for 60fps */
     @media (max-width: 768px) {
       .hero-orb { filter: blur(40px); }
+      .hero-singularity { animation: none; opacity: 0.9; }
+      .hero-orb--1, .hero-orb--2, .hero-orb--3 { animation-duration: 25s; }
     }
 
     /* ===== OVL Splash: cinematic intro (Netflix-style) ===== */
     body.ovl-splash-active { overflow: hidden !important; height: 100% !important; }
+    /* Hide all content until splash finishes – no flash of site */
+    body.ovl-splash-active #void-layer,
+    body.ovl-splash-active .nav-glass,
+    body.ovl-splash-active main,
+    body.ovl-splash-active #cursor-overlay {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transition: none !important;
+    }
+    /* Smooth reveal after splash */
+    #void-layer, header, main {
+      transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
     #ovl-splash {
       position: fixed;
       inset: 0;
@@ -457,33 +496,35 @@
     var logo = splash && splash.querySelector('.ovl-splash__logo');
     var body = document.body;
 
-    if (sessionStorage.getItem(key)) {
-      if (splash) splash.remove();
+    function removeSplash() {
+      if (!body.classList.contains('ovl-splash-active')) return;
       body.classList.remove('ovl-splash-active');
+      try { sessionStorage.setItem(key, '1'); } catch (e) {}
+      if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+    }
+
+    if (sessionStorage.getItem(key)) {
+      removeSplash();
       return;
     }
 
     var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function removeSplash() {
-      if (splash && splash.parentNode) splash.remove();
-      body.classList.remove('ovl-splash-active');
-      try { sessionStorage.setItem(key, '1'); } catch (e) {}
-    }
+    if (logo) logo.classList.add('ovl-splash__logo--animate');
 
     if (prefersReducedMotion) {
-      if (logo) logo.classList.add('ovl-splash__logo--animate');
       setTimeout(removeSplash, 500);
       return;
     }
 
-    if (logo) logo.classList.add('ovl-splash__logo--animate');
+    function onDone() {
+      removeSplash();
+    }
     splash.addEventListener('animationend', function handler(e) {
       if (e.target !== logo) return;
       splash.removeEventListener('animationend', handler);
-      removeSplash();
+      onDone();
     });
-    setTimeout(removeSplash, 2600);
+    setTimeout(onDone, 2600);
   })();
   </script>
   <!-- ===== Void distortion layer (WebGL background) ===== -->
@@ -491,25 +532,26 @@
 
   <!-- ==================== NAVBAR ==================== -->
   <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
-    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-2 text-lg brand-name transition-colors">
-        <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-8 w-auto object-contain" />
-        <span class="hidden sm:inline">Obscuron Void Labs</span>
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 h-16 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2.5 text-base font-medium brand-name transition-colors">
+        <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-7 w-auto object-contain" />
+        <span class="hidden sm:inline tracking-wide">Obscuron Void Labs</span>
       </a>
-      <div class="flex items-center gap-6">
-        <a href="#about" class="hidden sm:inline text-sm text-slate-400 hover:text-white transition-colors">About</a>
-        <a href="#products" class="hidden sm:inline text-sm text-slate-400 hover:text-white transition-colors">Products</a>
-        <a href="#use-cases" class="hidden sm:inline text-sm text-slate-400 hover:text-white transition-colors">Use Cases</a>
-        <a href="#current-stage" class="hidden sm:inline text-sm text-slate-400 hover:text-white transition-colors">Current Stage</a>
-        <a href="#why-us" class="hidden sm:inline text-sm text-slate-400 hover:text-white transition-colors">Why Us</a>
-        <a href="#early-access" class="text-sm btn-primary px-4 py-2 rounded-lg font-medium">Early Access</a>
+      <div class="flex items-center gap-1 sm:gap-8">
+        <a href="#about" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">About</a>
+        <a href="#products" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Products</a>
+        <a href="#use-cases" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Use Cases</a>
+        <a href="#current-stage" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Current Stage</a>
+        <a href="#why-us" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Why Us</a>
+        <a href="#early-access" class="text-sm btn-primary px-5 py-2.5 rounded-xl font-medium ml-2">Early Access</a>
       </div>
     </nav>
   </header>
 
   <main class="relative z-10">
     <!-- ==================== HERO ==================== -->
-    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-24 text-center overflow-hidden">
+    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-32 text-center overflow-hidden">
+      <div class="hero-cinematic-light" aria-hidden="true"></div>
       <div class="absolute inset-0 pointer-events-none hero-orbs" id="hero-orbs" aria-hidden="true">
         <div class="hero-orb-parallax" data-speed="0.03"><div class="hero-orb hero-orb--1"></div></div>
         <div class="hero-orb-parallax" data-speed="0.02"><div class="hero-orb hero-orb--2"></div></div>
@@ -533,24 +575,26 @@
         </svg>
       </div>
       <div class="relative z-10 max-w-3xl mx-auto">
-        <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="animate-in mx-auto h-16 sm:h-20 md:h-24 w-auto object-contain mb-6" />
-        <p class="animate-in text-cyan-400/90 text-sm font-medium tracking-widest uppercase mb-4">Deep-tech · India</p>
+        <div class="hero-logo-wrap mb-8">
+          <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="mx-auto h-12 sm:h-14 md:h-16 w-auto object-contain opacity-90" loading="eager" />
+        </div>
+        <p class="animate-in text-slate-500 text-xs font-medium tracking-[0.2em] uppercase mb-6">Deep-tech · India</p>
         <div class="hero-title-singularity">
-          <h1 id="hero-title" class="animate-in delay-1 text-4xl sm:text-5xl md:text-6xl font-bold brand-name brand-name-hero">
+          <h1 id="hero-title" class="animate-in delay-1 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight brand-name brand-name-hero">
             Obscuron Void Labs
           </h1>
         </div>
-        <p class="animate-in delay-2 mt-4 text-xl sm:text-2xl text-slate-300 font-light">
+        <p class="animate-in delay-2 mt-8 text-xl sm:text-2xl text-slate-400 font-light leading-relaxed">
           Building intelligent systems, secure infrastructure, and next-generation automation.
         </p>
-        <p class="animate-in delay-2 mt-4 text-slate-400 text-base sm:text-lg max-w-2xl mx-auto">
+        <p class="animate-in delay-2 mt-6 text-slate-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
           We are a deep-tech innovation lab focused on future-ready infrastructure, secure systems, and vision-driven solutions for enterprises and institutions.
         </p>
-        <div class="animate-in delay-3 mt-10 flex flex-wrap justify-center gap-4">
-          <a href="#products" class="btn-primary px-6 py-3 rounded-lg font-medium text-white inline-flex items-center gap-2">
+        <div class="animate-in delay-3 mt-14 flex flex-wrap justify-center gap-4">
+          <a href="#products" class="btn-primary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">
             View Products
           </a>
-          <a href="#early-access" class="btn-secondary px-6 py-3 rounded-lg font-medium text-white inline-flex items-center gap-2">
+          <a href="#early-access" class="btn-secondary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">
             Join Early Access
           </a>
         </div>
@@ -740,7 +784,7 @@
     <footer class="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-4">
-          <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-8 w-auto object-contain opacity-90" />
+          <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-8 w-auto object-contain opacity-90" loading="lazy" />
           <span class="text-slate-400 text-sm">
             <a href="mailto:admin@obscuronvoidlabs.com" class="text-cyan-400/90 hover:text-cyan-400 transition-colors">admin@obscuronvoidlabs.com</a>
           </span>
