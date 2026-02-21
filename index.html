@@ -480,7 +480,7 @@
       .hero-orb--1, .hero-orb--2, .hero-orb--3 { animation-duration: 25s; }
     }
 
-    /* ===== OVL Splash: fullscreen video intro (standalone layer) ===== */
+    /* ===== OVL Splash: logo zoom intro (once per session) ===== */
     html.ovl-splash-active,
     body.ovl-splash-active {
       overflow: hidden !important;
@@ -503,74 +503,67 @@
       position: fixed;
       inset: 0;
       z-index: 2147483647;
-      width: 100vw;
-      height: 100vh;
-      min-width: 100%;
-      min-height: 100%;
+      width: 100%;
+      height: 100%;
       background-color: #050508;
       pointer-events: auto;
       -webkit-tap-highlight-color: transparent;
       isolation: isolate;
       transform: translateZ(0);
-      -webkit-transform: translateZ(0);
-      transition: opacity 0.6s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease-out;
       overflow: hidden;
-    }
-    @supports (height: 100dvh) {
-      #ovl-splash { height: 100dvh; min-height: 100dvh; }
-    }
-    @media (max-width: 768px) {
-      #ovl-splash {
-        height: 100vh;
-        height: 100dvh;
-        min-height: -webkit-fill-available;
-      }
     }
     #ovl-splash.ovl-splash--fade-out {
       opacity: 0;
       pointer-events: none;
     }
     .ovl-splash__inner {
-      position: absolute;
-      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
       height: 100%;
-      overflow: hidden;
     }
-    .ovl-splash__video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
+    .ovl-splash__logo {
+      max-width: min(85vw, 420px);
+      width: auto;
+      height: auto;
+      max-height: 50vh;
+      object-fit: contain;
+      opacity: 0;
+      transform: scale(0.35);
     }
-    @media (max-width: 768px) {
-      .ovl-splash__video {
-        object-fit: contain;
-        object-position: center center;
+    .ovl-splash__logo.ovl-splash__logo--animate {
+      animation: ovl-splash-zoom 2.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    @keyframes ovl-splash-zoom {
+      0%   { opacity: 0; transform: scale(0.35); }
+      14%  { opacity: 1; transform: scale(0.5); }
+      70%  { opacity: 1; transform: scale(1); }
+      88%  { opacity: 0.4; transform: scale(1.06); }
+      100% { opacity: 0; transform: scale(1.12); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ovl-splash__logo.ovl-splash__logo--animate {
+        animation: ovl-splash-reduced 0.4s ease-out forwards;
       }
+    }
+    @keyframes ovl-splash-reduced {
+      0%   { opacity: 0; transform: scale(0.9); }
+      40%  { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1); }
     }
   </style>
   <script>document.documentElement.classList.add('ovl-splash-active');</script>
 </head>
 <body class="bg-void bg-grid text-white antialiased min-h-screen ovl-splash-active" id="body-el">
-  <!-- ===== OVL Splash: cinematic video intro (once per session) ===== -->
+  <!-- ===== OVL Splash: logo zoom intro (once per session) ===== -->
   <div id="ovl-splash" class="ovl-splash" aria-hidden="true" role="presentation">
     <div class="ovl-splash__inner">
-      <video
-        id="ovl-splash-video"
-        class="ovl-splash__video"
-        autoplay
-        muted
-        playsinline
-        preload="auto"
-        aria-label="Obscuron Void Labs intro"
-      >
-        <source src="intro video.mp4" type="video/mp4" />
-      </video>
+      <img id="ovl-splash-logo" class="ovl-splash__logo" src="Obscuron Void Labs Logo.png" alt="" />
     </div>
   </div>
   <script>
@@ -578,7 +571,7 @@
     'use strict';
     var key = 'ovl-splash-seen';
     var splash = document.getElementById('ovl-splash');
-    var video = document.getElementById('ovl-splash-video');
+    var logo = document.getElementById('ovl-splash-logo');
     var body = document.body;
     var html = document.documentElement;
 
@@ -602,25 +595,20 @@
       return;
     }
 
-    function onVideoEnd() {
+    function onDone() {
       if (!splash || !body.classList.contains('ovl-splash-active')) return;
       splash.classList.add('ovl-splash--fade-out');
-      setTimeout(removeSplash, 650);
+      setTimeout(removeSplash, 550);
     }
 
-    function onVideoError() {
-      removeSplash();
-    }
-
-    if (video) {
-      video.muted = true;
-      video.playsInline = true;
-      video.setAttribute('playsinline', '');
-      video.setAttribute('muted', '');
-      video.addEventListener('ended', onVideoEnd, { once: true });
-      video.addEventListener('error', onVideoError, { once: true });
-      var p = video.play();
-      if (p && typeof p.catch === 'function') p.catch(function() { removeSplash(); });
+    if (logo) {
+      logo.classList.add('ovl-splash__logo--animate');
+      splash.addEventListener('animationend', function handler(e) {
+        if (e.target !== logo) return;
+        splash.removeEventListener('animationend', handler);
+        onDone();
+      });
+      setTimeout(onDone, 2600);
     } else {
       removeSplash();
     }
