@@ -396,9 +396,96 @@
     @media (max-width: 768px) {
       .hero-orb { filter: blur(40px); }
     }
+
+    /* ===== OVL Splash: cinematic intro (Netflix-style) ===== */
+    body.ovl-splash-active { overflow: hidden !important; height: 100% !important; }
+    #ovl-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background-color: #050508;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ovl-splash__inner { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+    .ovl-splash__logo {
+      max-width: min(85vw, 420px);
+      width: auto;
+      height: auto;
+      max-height: 50vh;
+      object-fit: contain;
+      opacity: 0;
+      transform: scale(0.35);
+    }
+    .ovl-splash__logo.ovl-splash__logo--animate {
+      animation: ovl-splash-zoom 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    @keyframes ovl-splash-zoom {
+      0%   { opacity: 0; transform: scale(0.35); }
+      14%  { opacity: 1; transform: scale(0.5); }
+      70%  { opacity: 1; transform: scale(1); }
+      88%  { opacity: 0.4; transform: scale(1.08); }
+      100% { opacity: 0; transform: scale(1.15); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ovl-splash__logo.ovl-splash__logo--animate {
+        animation: ovl-splash-reduced 0.4s ease-out forwards;
+      }
+    }
+    @keyframes ovl-splash-reduced {
+      0%   { opacity: 0; transform: scale(0.9); }
+      40%  { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1); }
+    }
   </style>
 </head>
-<body class="bg-void bg-grid text-white antialiased min-h-screen" id="body-el">
+<body class="bg-void bg-grid text-white antialiased min-h-screen ovl-splash-active" id="body-el">
+  <!-- ===== OVL Splash: cinematic intro (once per session) ===== -->
+  <div id="ovl-splash" class="ovl-splash" aria-hidden="true" role="presentation">
+    <div class="ovl-splash__inner">
+      <img class="ovl-splash__logo" src="Obscuron Void Labs Logo.png" alt="" />
+    </div>
+  </div>
+  <script>
+  (function() {
+    'use strict';
+    var key = 'ovl-splash-seen';
+    var splash = document.getElementById('ovl-splash');
+    var logo = splash && splash.querySelector('.ovl-splash__logo');
+    var body = document.body;
+
+    if (sessionStorage.getItem(key)) {
+      if (splash) splash.remove();
+      body.classList.remove('ovl-splash-active');
+      return;
+    }
+
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function removeSplash() {
+      if (splash && splash.parentNode) splash.remove();
+      body.classList.remove('ovl-splash-active');
+      try { sessionStorage.setItem(key, '1'); } catch (e) {}
+    }
+
+    if (prefersReducedMotion) {
+      if (logo) logo.classList.add('ovl-splash__logo--animate');
+      setTimeout(removeSplash, 500);
+      return;
+    }
+
+    if (logo) logo.classList.add('ovl-splash__logo--animate');
+    splash.addEventListener('animationend', function handler(e) {
+      if (e.target !== logo) return;
+      splash.removeEventListener('animationend', handler);
+      removeSplash();
+    });
+    setTimeout(removeSplash, 2600);
+  })();
+  </script>
   <!-- ===== Void distortion layer (WebGL background) ===== -->
   <canvas id="void-layer" aria-hidden="true"></canvas>
 
