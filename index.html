@@ -12,6 +12,9 @@
   <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" sizes="192x192" />
   <link rel="apple-touch-icon" href="Obscuron Void Labs Logo.png" />
   <link rel="preload" href="Obscuron Void Labs Logo.png" as="image" />
+  <!-- Brand logo variants: transparent (dark sections) + with background (light sections) -->
+  <link rel="preload" href="Proxnet Logo.jpg" as="image" />
+  <link rel="preload" href="Proxnet Logo (1).jpg" as="image" />
   <!-- Open Graph / social preview -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Obscuron Void Labs LLP | Deep-Tech Innovation Lab" />
@@ -404,6 +407,31 @@
       .hero-main-logo { max-width: min(50vw, 520px); }
     }
 
+    /* Reusable brand logo: optimal contrast, responsive, retina-friendly */
+    .brand-logo {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: auto;
+    }
+    .brand-logo[data-logo-size="nav"] {
+      height: 1.75rem;
+      width: auto;
+    }
+    @media (min-width: 640px) {
+      .brand-logo[data-logo-size="nav"] { height: 2rem; }
+    }
+    .brand-logo[data-logo-size="footer"] {
+      height: 2rem;
+      width: auto;
+    }
+    @media (min-width: 640px) {
+      .brand-logo[data-logo-size="footer"] { height: 2.25rem; }
+    }
+
     /* Section scroll reveal: fade + rise */
     .section-reveal {
       opacity: 0;
@@ -681,7 +709,7 @@
   <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
     <nav class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 h-16 flex items-center justify-between">
       <a href="#hero" class="flex items-center gap-2.5 text-base font-medium brand-name transition-colors">
-        <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-7 w-auto object-contain" />
+        <img id="nav-logo" class="brand-logo" data-logo-mode="auto" data-logo-size="nav" src="Proxnet Logo.jpg" alt="Obscuron Void Labs" loading="eager" />
         <span class="hidden sm:inline tracking-wide">Obscuron Void Labs</span>
       </a>
       <div class="flex items-center gap-1 sm:gap-8">
@@ -725,12 +753,7 @@
         <p class="animate-in text-slate-500 text-xs font-medium tracking-[0.2em] uppercase mb-8">Deep-tech · India</p>
         <div class="hero-title-singularity mb-8">
           <h1 id="hero-title" class="sr-only">Obscuron Void Labs</h1>
-          <img
-            src="Obscuron Void Labs Logo.png"
-            alt="Obscuron Void Labs"
-            class="hero-main-logo"
-            loading="eager"
-          />
+          <img id="hero-logo" class="brand-logo hero-main-logo" data-logo-mode="dark" data-logo-size="hero" src="Proxnet Logo.jpg" alt="Obscuron Void Labs" loading="eager" />
         </div>
         <p class="animate-in delay-2 mt-8 text-xl sm:text-2xl text-slate-400 font-light leading-relaxed">
           Building intelligent systems, secure infrastructure, and next-generation automation.
@@ -934,7 +957,7 @@
     <footer class="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-4">
-          <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-8 w-auto object-contain opacity-90" loading="lazy" />
+          <img id="footer-logo" class="brand-logo opacity-90" data-logo-mode="dark" data-logo-size="footer" src="Proxnet Logo.jpg" alt="Obscuron Void Labs" loading="lazy" />
           <span class="text-slate-400 text-sm">
             <a href="mailto:admin@obscuronvoidlabs.com" class="text-cyan-400/90 hover:text-cyan-400 transition-colors">admin@obscuronvoidlabs.com</a>
           </span>
@@ -962,6 +985,41 @@
       e.preventDefault();
       alert('Thank you for joining the waitlist. We’ll be in touch soon.');
     });
+  </script>
+  <!-- ===== Brand logo: central config + dark/light switching ===== -->
+  <script>
+(function() {
+  'use strict';
+  // Central logo config: dark = transparent (Proxnet Logo.jpg), light = with background (Proxnet Logo (1).jpg). Add data-section-bg="light" to any section to use the background logo when the navbar is over it.
+  var LOGO = {
+    dark: 'Proxnet Logo.jpg',
+    light: 'Proxnet Logo (1).jpg'
+  };
+  function applyLogo(el, useLight) {
+    if (!el || !el.getAttribute) return;
+    var src = useLight ? LOGO.light : LOGO.dark;
+    if (el.getAttribute('src') !== src) el.setAttribute('src', src);
+  }
+  function isOverLightSection() {
+    var y = 80, x = typeof window !== 'undefined' && window.innerWidth ? window.innerWidth / 2 : 0;
+    var light = document.querySelectorAll('section[data-section-bg="light"]');
+    for (var i = 0; i < light.length; i++) {
+      var r = light[i].getBoundingClientRect();
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return true;
+    }
+    return false;
+  }
+  function updateAutoLogos() {
+    var useLight = isOverLightSection();
+    document.querySelectorAll('.brand-logo[data-logo-mode="auto"]').forEach(function(el) { applyLogo(el, useLight); });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.brand-logo[data-logo-mode="dark"]').forEach(function(el) { applyLogo(el, false); });
+    document.querySelectorAll('.brand-logo[data-logo-mode="auto"]').forEach(function(el) { applyLogo(el, isOverLightSection()); });
+    window.addEventListener('scroll', updateAutoLogos, { passive: true });
+    window.addEventListener('resize', updateAutoLogos);
+  });
+})();
   </script>
   <!-- ===== Brand: section reveal + hero parallax ===== -->
   <script>
