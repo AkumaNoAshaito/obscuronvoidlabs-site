@@ -405,6 +405,43 @@
       .hero-main-logo { max-width: min(50vw, 520px); }
     }
 
+    /* ProxNet product card logo: flagship prominence, responsive, premium */
+    .proxnet-product-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .proxnet-product-logo {
+      display: block;
+      width: auto;
+      height: 3.5rem;
+      max-width: 100%;
+      object-fit: contain;
+      object-position: left center;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: auto;
+      filter: drop-shadow(0 0 16px rgba(34, 211, 238, 0.12));
+      transition: filter 0.35s ease, transform 0.35s ease;
+    }
+    .proxnet-product-logo:hover {
+      filter: drop-shadow(0 0 24px rgba(34, 211, 238, 0.2));
+      transform: scale(1.02);
+    }
+    @media (min-width: 640px) {
+      .proxnet-product-logo { height: 4rem; }
+      .proxnet-product-logo-wrap { margin-bottom: 1.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .proxnet-product-logo { height: 4.75rem; }
+      .proxnet-product-logo-wrap { margin-top: 0.75rem; margin-bottom: 1.75rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .proxnet-product-logo { transition: none; }
+      .proxnet-product-logo:hover { transform: none; }
+    }
+
     /* Section scroll reveal: fade + rise */
     .section-reveal {
       opacity: 0;
@@ -777,11 +814,13 @@
         <div class="grid md:grid-cols-2 gap-8">
           <!-- Product 1: ProxNet (Flagship) -->
           <article class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col">
-            <div class="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium mb-4">
+            <div class="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium mb-3">
               <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
               Flagship · Early Beta
             </div>
-            <img src="Proxnet Logo.jpg" alt="ProxNet" class="h-10 sm:h-12 w-auto object-contain mb-4" loading="lazy" />
+            <div class="proxnet-product-logo-wrap">
+              <img src="Proxnet Logo.jpg" alt="ProxNet" class="proxnet-product-logo" width="180" height="48" loading="lazy" />
+            </div>
             <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">ProxNet</h3>
             <p class="text-slate-400 mb-6 flex-grow">
               A <strong class="text-slate-300">smart attendance and access platform</strong> using BLE (Bluetooth Low Energy) and Face ID verification. BLE detects proximity and presence; face recognition confirms identity. Contactless, automated, and designed to prevent proxy attendance and time fraud.
