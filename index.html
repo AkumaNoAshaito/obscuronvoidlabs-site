@@ -1009,9 +1009,28 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+    document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      alert('Thank you for joining the waitlist. We’ll be in touch soon.');
+
+      const emailInput = document.getElementById('email');
+      const email = emailInput ? emailInput.value : '';
+
+      try {
+        const response = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        if (response.ok) {
+          alert('Successfully joined the waitlist!');
+        } else {
+          alert('Something went wrong. Try again.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network error.');
+      }
     });
   </script>
   <!-- ===== Brand: section reveal + hero parallax ===== -->
