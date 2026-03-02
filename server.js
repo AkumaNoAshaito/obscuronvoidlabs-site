@@ -1,7 +1,7 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import { Resend } from "resend";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const { Resend } = require("resend");
 
 dotenv.config();
 
@@ -38,3 +38,5 @@ app.use(express.static(".")); // serve your HTML
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Server running on", PORT));
+
+module.exports = app;
