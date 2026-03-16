@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Announcements | VOIDNEXUS Module by OBSCURON VOID LABS</title>
+  <link rel="icon" href="../Obscuron Void Labs Logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { void: { 950: '#050508', 900: '#0a0a0f' }, accent: { cyan: '#22d3ee', violet: '#a78bfa', emerald: '#34d399' } },
+          fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/void-theme.css" />
+  <style>
+    .glass { background: rgba(15, 15, 24, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .glass-card { background: rgba(15, 15, 24, 0.5); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+    .glass-card:hover { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.2); transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(34, 211, 238, 0.08)); border: 1px solid rgba(34, 211, 238, 0.35); }
+    .btn-primary:hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 4px 24px rgba(34, 211, 238, 0.15); }
+    .btn-secondary { border: 1px solid rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.03); }
+    .btn-secondary:hover { border-color: rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.06); }
+  </style>
+</head>
+<body class="bg-void bg-grid text-white antialiased min-h-screen font-sans">
+  <header class="sticky top-0 z-50 bg-void/90 backdrop-blur-xl border-b border-white/5">
+    <nav class="max-w-4xl mx-auto px-5 py-4 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
+        <img src="../Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-6 w-auto" />
+        <span class="text-sm font-medium">VOIDNEXUS</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="../voidnexus.html#modules" class="text-sm text-slate-500 hover:text-slate-200">Platform</a>
+        <a href="../voidnexus.html#modules" class="text-sm text-slate-500 hover:text-slate-200">Modules</a>
+        <a href="../demo.html" class="text-sm btn-primary px-4 py-2 rounded-lg font-medium">Request Demo</a>
+      </div>
+    </nav>
+  </header>
+  <main class="max-w-4xl mx-auto px-5 py-16">
+    <p class="text-emerald-400 text-sm font-medium mb-2">VOIDNEXUS Module</p>
+    <h1 class="text-4xl font-bold text-white mb-4">Announcements</h1>
+    <p class="text-xl text-slate-400 mb-10">College-wide and departmental announcements.</p>
+
+    <section class="glass rounded-2xl p-8 mb-10">
+      <h2 class="text-2xl font-bold text-white mb-4">Description</h2>
+      <p class="text-slate-400 leading-relaxed mb-4">
+        The Announcements module lets admins and faculty publish <strong class="text-slate-300">official notices</strong> to the whole campus or to specific departments, courses, or roles. Students see them in the VOIDNEXUS app and can get optional push or email notifications. Keeps everyone aligned without relying on notice boards or scattered emails.
+      </p>
+    </section>
+
+    <section class="glass rounded-2xl p-8 mb-10">
+      <h2 class="text-2xl font-bold text-white mb-4">Features</h2>
+      <ul class="space-y-3 text-slate-400">
+        <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> College-wide and departmental targeting</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Role- and course-based audiences</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Rich text and optional attachments</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Scheduling and expiry</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Delivery via app, push, and email</li>
+      </ul>
+    </section>
+
+    <section class="glass rounded-2xl p-8 mb-10">
+      <h2 class="text-2xl font-bold text-white mb-4">Use Cases</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-semibold text-white mb-2">Admin notices</h3>
+          <p class="text-slate-400 text-sm">Holidays, fee deadlines, and policy updates.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-semibold text-white mb-2">Department news</h3>
+          <p class="text-slate-400 text-sm">Course changes, lab timings, and department events.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-semibold text-white mb-2">Emergency alerts</h3>
+          <p class="text-slate-400 text-sm">Campus-wide or building-specific alerts.</p>
+        </div>
+        <div class="glass-card rounded-xl p-5">
+          <h3 class="font-semibold text-white mb-2">Event promotion</h3>
+          <p class="text-slate-400 text-sm">Drive visibility for campus and inter-college events.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass rounded-2xl p-8 mb-10">
+      <h2 class="text-2xl font-bold text-white mb-4">Integration</h2>
+      <p class="text-slate-400 leading-relaxed mb-4">
+        Announcements use VOIDNEXUS <strong class="text-slate-300">identity and roles</strong> for targeting. They appear in the same feed as events and can be linked from the Events module. Works with Campus Messaging for follow-up discussion and with the full platform for a single student experience.
+      </p>
+    </section>
+
+    <div class="flex flex-wrap gap-4">
+      <a href="../voidnexus.html#modules" class="btn-primary px-6 py-3 rounded-xl font-medium">View all modules</a>
+      <a href="../demo.html" class="btn-secondary px-6 py-3 rounded-xl font-medium">Request Demo</a>
+    </div>
+  </main>
+  <footer class="border-t border-white/5 py-8 mt-16">
+    <div class="max-w-4xl mx-auto px-5 text-center text-slate-500 text-sm">
+      © <span id="year"></span> OBSCURON VOID LABS LLP. VOIDNEXUS is the digital infrastructure platform for modern campuses.
+    </div>
+  </footer>
+  <div id="cursor-overlay" aria-hidden="true"><div id="cursor-dot"></div></div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="../js/void-cursor.js"></script>
+</body>
+</html>

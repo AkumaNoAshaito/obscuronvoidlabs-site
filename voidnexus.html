@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOIDNEXUS | OBSCURON VOID LABS</title>
+  <meta name="description" content="VOIDNEXUS platform: ProxNet, architecture, security, deployment, API and integrations. Request a demo." />
+  <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { void: { 950: '#050508', 900: '#0a0a0f', 800: '#0f0f18' }, accent: { cyan: '#22d3ee', violet: '#a78bfa', emerald: '#34d399' } },
+          fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/void-theme.css" />
+  <style>
+    body { font-family: 'Outfit', system-ui, sans-serif; }
+    .glass { background: rgba(15, 15, 24, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .glass-card { background: rgba(15, 15, 24, 0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+    .glass-card:hover { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.2); transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(34, 211, 238, 0.08)); border: 1px solid rgba(34, 211, 238, 0.35); }
+    .btn-primary:hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 4px 24px rgba(34, 211, 238, 0.15); }
+    .nav-glass { background: rgba(5, 5, 8, 0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown .nav-dropdown-menu { position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 200px; padding: 8px 0; background: rgba(15, 15, 24, 0.95); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity 0.2s, visibility 0.2s, transform 0.2s; z-index: 60; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown-menu a { display: block; padding: 10px 16px; color: rgb(148, 163, 184); font-size: 0.875rem; white-space: nowrap; }
+    .nav-dropdown-menu a:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+  </style>
+</head>
+<body class="bg-void min-h-screen text-white antialiased">
+  <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-2">
+      <a href="index.html" class="flex items-center gap-2 text-base font-medium text-white hover:text-cyan-400/90 transition-colors">
+        <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-6 w-auto object-contain" />
+        <span class="hidden sm:inline tracking-wide">OBSCURON VOID LABS</span>
+      </a>
+      <div class="flex items-center gap-1 sm:gap-3 flex-wrap justify-end text-sm">
+        <a href="index.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Home</a>
+        <a href="index.html#about" class="text-slate-400 hover:text-white transition-colors py-2 px-1">About Obscuron</a>
+        <a href="index.html#products" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Products</a>
+        <div class="nav-dropdown hidden sm:block">
+          <a href="voidnexus.html" class="text-cyan-400 font-medium py-2 px-1 inline-flex items-center gap-1">VOIDNEXUS <span aria-hidden="true">▾</span></a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="modules/proxnet.html" role="menuitem">ProxNet</a>
+            <a href="architecture.html" role="menuitem">Architecture</a>
+            <a href="security.html" role="menuitem">Security</a>
+            <a href="deployment.html" role="menuitem">Deployment</a>
+            <a href="api-integrations.html" role="menuitem">API &amp; Integrations</a>
+            <a href="demo.html" role="menuitem">Request Demo</a>
+          </div>
+        </div>
+        <a href="index.html#custom-saas" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Custom SaaS</a>
+        <a href="contact.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Contact</a>
+        <a href="demo.html" class="btn-primary px-4 py-2 rounded-xl font-medium text-sm ml-1">Request Demo</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="glass rounded-2xl p-8 sm:p-10 mb-12 text-center">
+        <div class="flex justify-center mb-6">
+          <img src="VoidNexus Logo.png" alt="VOIDNEXUS" class="h-16 sm:h-20 w-auto object-contain" loading="lazy" />
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">VOIDNEXUS</h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">A modular campus operations platform designed to help institutions manage academic workflows, communication, and administrative processes in a single system. It focuses on reducing manual work, improving operational clarity, and enabling institutions to manage daily workflows efficiently.</p>
+      </div>
+
+      <section class="mb-14">
+        <h2 class="text-xl font-bold text-white mb-6">Platform &amp; Infrastructure</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a href="modules/proxnet.html" class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col block">
+            <div class="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> ProxNet</div>
+            <h3 class="text-xl font-bold text-white mb-2">ProxNet</h3>
+            <p class="text-slate-400 text-sm flex-grow">Identity-based access and device management system for institutional networks.</p>
+            <span class="text-cyan-400 text-sm font-medium mt-2">Learn more →</span>
+          </a>
+          <a href="architecture.html" class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col block">
+            <div class="inline-flex items-center gap-2 text-violet-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-violet-400"></span> Architecture</div>
+            <h3 class="text-xl font-bold text-white mb-2">Architecture</h3>
+            <p class="text-slate-400 text-sm flex-grow">System architecture, module structure, integration flow, security layers, and scalability.</p>
+            <span class="text-violet-400 text-sm font-medium mt-2">Learn more →</span>
+          </a>
+          <a href="security.html" class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col block">
+            <div class="inline-flex items-center gap-2 text-emerald-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Security</div>
+            <h3 class="text-xl font-bold text-white mb-2">Security &amp; Compliance</h3>
+            <p class="text-slate-400 text-sm flex-grow">Data encryption, identity verification, device fingerprinting, audit logging, and compliance readiness.</p>
+            <span class="text-emerald-400 text-sm font-medium mt-2">Learn more →</span>
+          </a>
+          <a href="deployment.html" class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col block">
+            <div class="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> Deployment</div>
+            <h3 class="text-xl font-bold text-white mb-2">Deployment Options</h3>
+            <p class="text-slate-400 text-sm flex-grow">Cloud-hosted, on-premise, and hybrid deployment models.</p>
+            <span class="text-cyan-400 text-sm font-medium mt-2">Learn more →</span>
+          </a>
+          <a href="api-integrations.html" class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col block">
+            <div class="inline-flex items-center gap-2 text-violet-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-violet-400"></span> API</div>
+            <h3 class="text-xl font-bold text-white mb-2">API &amp; Integrations</h3>
+            <p class="text-slate-400 text-sm flex-grow">Integrate with ERP, LMS, biometric systems, and hostel management platforms.</p>
+            <span class="text-violet-400 text-sm font-medium mt-2">Learn more →</span>
+          </a>
+          <a href="demo.html" class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col block">
+            <div class="inline-flex items-center gap-2 text-emerald-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Demo</div>
+            <h3 class="text-xl font-bold text-white mb-2">Request Demo</h3>
+            <p class="text-slate-400 text-sm flex-grow">Request a campus demo and we will get in touch to arrange a walkthrough.</p>
+            <span class="text-emerald-400 text-sm font-medium mt-2">Request Demo →</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="modules" class="mb-14">
+        <h2 class="text-xl font-bold text-white mb-6">Modules</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <a href="modules/smart-attendance.html" class="glass-card rounded-xl p-6 block">
+            <h3 class="font-bold text-white mb-2">Smart Attendance</h3>
+            <p class="text-slate-400 text-sm">Digital attendance system for institutions.</p>
+          </a>
+          <a href="modules/academic-workflow.html" class="glass-card rounded-xl p-6 block">
+            <h3 class="font-bold text-white mb-2">Academic Workflow</h3>
+            <p class="text-slate-400 text-sm">Scheduling, substitutions, faculty workload.</p>
+          </a>
+          <a href="modules/assignments.html" class="glass-card rounded-xl p-6 block">
+            <h3 class="font-bold text-white mb-2">Assignments &amp; Digital Audit</h3>
+            <p class="text-slate-400 text-sm">Digital submission and audit trails.</p>
+          </a>
+          <a href="modules/campus-messaging.html" class="glass-card rounded-xl p-6 block">
+            <h3 class="font-bold text-white mb-2">Campus Messaging</h3>
+            <p class="text-slate-400 text-sm">Structured communication within the institution.</p>
+          </a>
+          <a href="modules/announcements.html" class="glass-card rounded-xl p-6 block">
+            <h3 class="font-bold text-white mb-2">Announcements</h3>
+            <p class="text-slate-400 text-sm">Centralized institutional communication.</p>
+          </a>
+          <a href="modules/event-system.html" class="glass-card rounded-xl p-6 block">
+            <h3 class="font-bold text-white mb-2">Events System</h3>
+            <p class="text-slate-400 text-sm">Campus events and participation.</p>
+          </a>
+          <a href="modules/student-network.html" class="glass-card rounded-xl p-6 block">
+            <h3 class="font-bold text-white mb-2">Student Network</h3>
+            <p class="text-slate-400 text-sm">Peer connection and collaboration.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-10">
+        <h2 class="text-xl font-bold text-white mb-4">Campus Administration</h2>
+        <p class="text-slate-400 mb-6">VOIDNEXUS provides administrators and faculty with centralized control and visibility across campus systems.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="rounded-xl p-4 border border-white/5 bg-white/5">
+            <h3 class="font-semibold text-white mb-1">Unified Dashboard</h3>
+            <p class="text-slate-400 text-sm">View engagement metrics, attendance, and system activity.</p>
+          </div>
+          <div class="rounded-xl p-4 border border-white/5 bg-white/5">
+            <h3 class="font-semibold text-white mb-1">Operational Automation</h3>
+            <p class="text-slate-400 text-sm">Streamline scheduling, coordination, and record management.</p>
+          </div>
+          <div class="rounded-xl p-4 border border-white/5 bg-white/5">
+            <h3 class="font-semibold text-white mb-1">Digital Academic Records</h3>
+            <p class="text-slate-400 text-sm">Secure audit logs for attendance and assignments.</p>
+          </div>
+          <div class="rounded-xl p-4 border border-white/5 bg-white/5">
+            <h3 class="font-semibold text-white mb-1">Event Management</h3>
+            <p class="text-slate-400 text-sm">Manage campus and inter-college events.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="demo.html" class="btn-primary px-6 py-3 rounded-xl font-medium">Request Demo</a>
+        <a href="index.html" class="border border-white/20 px-6 py-3 rounded-xl font-medium text-slate-300 hover:text-white hover:border-white/30 transition-colors">Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+      <div class="glass rounded-2xl p-8 flex flex-col items-center gap-6 text-center">
+        <div class="flex items-center gap-2">
+          <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-8 w-auto object-contain opacity-90" loading="lazy" />
+          <span class="text-slate-400 text-sm">OBSCURON VOID LABS LLP</span>
+        </div>
+        <p class="text-slate-500 text-sm">India</p>
+        <nav class="flex flex-wrap justify-center gap-4 text-sm">
+          <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Home</a>
+          <a href="index.html#about" class="text-slate-400 hover:text-white transition-colors">About Obscuron</a>
+          <a href="index.html#products" class="text-slate-400 hover:text-white transition-colors">Products</a>
+          <a href="voidnexus.html" class="text-slate-400 hover:text-white transition-colors">VOIDNEXUS</a>
+          <a href="contact.html" class="text-slate-400 hover:text-white transition-colors">Contact</a>
+        </nav>
+      </div>
+      <div class="glass rounded-2xl mt-6 p-4 text-center text-slate-500 text-sm">© <span id="year"></span> OBSCURON VOID LABS LLP.</div>
+    </div>
+  </footer>
+  <div id="cursor-overlay" aria-hidden="true"><div id="cursor-dot"></div></div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/void-cursor.js"></script>
+</body>
+</html>

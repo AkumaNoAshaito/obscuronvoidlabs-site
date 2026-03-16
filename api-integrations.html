@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API & Integrations | OBSCURON VOID LABS</title>
+  <meta name="description" content="ProxNet API and integrations with ERP, LMS, biometric systems, and hostel management for institutional systems." />
+  <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { void: { 950: '#050508', 900: '#0a0a0f', 800: '#0f0f18' }, accent: { cyan: '#22d3ee', violet: '#a78bfa', emerald: '#34d399' } },
+          fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/void-theme.css" />
+  <style>
+    body { font-family: 'Outfit', system-ui, sans-serif; }
+    .glass { background: rgba(15, 15, 24, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .glass-card { background: rgba(15, 15, 24, 0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+    .glass-card:hover { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.2); transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(34, 211, 238, 0.08)); border: 1px solid rgba(34, 211, 238, 0.35); }
+    .btn-primary:hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 4px 24px rgba(34, 211, 238, 0.15); }
+    .nav-glass { background: rgba(5, 5, 8, 0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown .nav-dropdown-menu { position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 200px; padding: 8px 0; background: rgba(15, 15, 24, 0.95); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .2s, visibility .2s, transform .2s; z-index: 60; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown-menu a { display: block; padding: 10px 16px; color: rgb(148, 163, 184); font-size: 0.875rem; }
+    .nav-dropdown-menu a:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+  </style>
+</head>
+<body class="bg-void min-h-screen text-white antialiased">
+  <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-2">
+      <a href="index.html" class="flex items-center gap-2 text-base font-medium text-white hover:text-cyan-400/90 transition-colors">
+        <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-6 w-auto object-contain" />
+        <span class="hidden sm:inline tracking-wide">OBSCURON VOID LABS</span>
+      </a>
+      <div class="flex items-center gap-1 sm:gap-3 flex-wrap justify-end text-sm">
+        <a href="index.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Home</a>
+        <a href="index.html#about" class="text-slate-400 hover:text-white transition-colors py-2 px-1">About Obscuron</a>
+        <a href="index.html#products" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Products</a>
+        <div class="nav-dropdown hidden sm:block">
+          <a href="voidnexus.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1 inline-flex items-center gap-1">VOIDNEXUS ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="modules/proxnet.html">ProxNet</a>
+            <a href="architecture.html">Architecture</a>
+            <a href="security.html">Security</a>
+            <a href="deployment.html">Deployment</a>
+            <a href="api-integrations.html" class="text-cyan-400">API &amp; Integrations</a>
+            <a href="demo.html">Request Demo</a>
+          </div>
+        </div>
+        <a href="index.html#custom-saas" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Custom SaaS</a>
+        <a href="contact.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Contact</a>
+        <a href="demo.html" class="btn-primary px-4 py-2 rounded-xl font-medium text-sm ml-1">Request Demo</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-2xl p-8 sm:p-10 mb-12 text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">API & Integrations</h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">ProxNet is designed to integrate with existing institutional systems.</p>
+      </div>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <p class="text-slate-400 leading-relaxed mb-6">The ProxNet API allows controlled integration with external software. Institutions can sync identity data, consume attendance and access events, and drive workflows from their existing ERP, LMS, or other campus systems. Integrations are built with security and auditability in mind so data flow remains visible and manageable.</p>
+        <h2 class="text-xl font-bold text-white mb-4">Example Integrations</h2>
+        <ul class="space-y-3 text-slate-400">
+          <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> College ERP systems</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Biometric attendance systems</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Learning Management Systems (LMS)</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Hostel management platforms</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Identity and authentication systems</li>
+        </ul>
+      </section>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <h2 class="text-xl font-bold text-white mb-4">Controlled Access</h2>
+        <p class="text-slate-400 leading-relaxed">API access is authenticated and can be scoped by role and endpoint. Usage is logged for compliance and troubleshooting. If you are evaluating integration with your ERP, LMS, or other platforms, we can discuss requirements and provide documentation during a demo or pilot.</p>
+      </section>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="products.html" class="btn-primary px-6 py-3 rounded-xl font-medium">View Products</a>
+        <a href="demo.html" class="border border-white/20 px-6 py-3 rounded-xl font-medium text-slate-300 hover:text-white hover:border-white/30 transition-colors">Request Demo</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+      <div class="glass rounded-2xl p-8 flex flex-col items-center gap-6 text-center">
+        <div class="flex items-center gap-2">
+          <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-8 w-auto object-contain opacity-90" loading="lazy" />
+          <span class="text-slate-400 text-sm">OBSCURON VOID LABS LLP</span>
+        </div>
+        <p class="text-slate-500 text-sm">India</p>
+        <nav class="flex flex-wrap justify-center gap-4 text-sm">
+          <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Home</a>
+          <a href="index.html#about" class="text-slate-400 hover:text-white transition-colors">About Obscuron</a>
+          <a href="index.html#products" class="text-slate-400 hover:text-white transition-colors">Products</a>
+          <a href="voidnexus.html" class="text-slate-400 hover:text-white transition-colors">VOIDNEXUS</a>
+          <a href="contact.html" class="text-slate-400 hover:text-white transition-colors">Contact</a>
+        </nav>
+      </div>
+      <div class="glass rounded-2xl mt-6 p-4 text-center text-slate-500 text-sm">© <span id="year"></span> OBSCURON VOID LABS LLP.</div>
+    </div>
+  </footer>
+  <div id="cursor-overlay" aria-hidden="true"><div id="cursor-dot"></div></div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/void-cursor.js"></script>
+</body>
+</html>

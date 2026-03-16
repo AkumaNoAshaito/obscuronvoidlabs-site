@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProxNet Architecture | OBSCURON VOID LABS</title>
+  <meta name="description" content="ProxNet system architecture: modules, integration flow, security layers, and scalability for institutional deployment." />
+  <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { void: { 950: '#050508', 900: '#0a0a0f', 800: '#0f0f18' }, accent: { cyan: '#22d3ee', violet: '#a78bfa', emerald: '#34d399' } },
+          fontFamily: { sans: ['Outfit', 'system-ui', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/void-theme.css" />
+  <style>
+    body { font-family: 'Outfit', system-ui, sans-serif; }
+    .glass { background: rgba(15, 15, 24, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); }
+    .glass-card { background: rgba(15, 15, 24, 0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+    .glass-card:hover { border-color: rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0,0,0,0.2); transform: translateY(-2px); }
+    .btn-primary { background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(34, 211, 238, 0.08)); border: 1px solid rgba(34, 211, 238, 0.35); }
+    .btn-primary:hover { border-color: rgba(34, 211, 238, 0.5); box-shadow: 0 4px 24px rgba(34, 211, 238, 0.15); }
+    .nav-glass { background: rgba(5, 5, 8, 0.72); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown .nav-dropdown-menu { position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 200px; padding: 8px 0; background: rgba(15, 15, 24, 0.95); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .2s, visibility .2s, transform .2s; z-index: 60; }
+    .nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown-menu a { display: block; padding: 10px 16px; color: rgb(148, 163, 184); font-size: 0.875rem; }
+    .nav-dropdown-menu a:hover { color: #fff; background: rgba(255, 255, 255, 0.05); }
+    .flow-node { border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+<body class="bg-void min-h-screen text-white antialiased">
+  <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-2">
+      <a href="index.html" class="flex items-center gap-2 text-base font-medium text-white hover:text-cyan-400/90 transition-colors">
+        <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-6 w-auto object-contain" />
+        <span class="hidden sm:inline tracking-wide">OBSCURON VOID LABS</span>
+      </a>
+      <div class="flex items-center gap-1 sm:gap-3 flex-wrap justify-end text-sm">
+        <a href="index.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Home</a>
+        <a href="index.html#about" class="text-slate-400 hover:text-white transition-colors py-2 px-1">About Obscuron</a>
+        <a href="index.html#products" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Products</a>
+        <div class="nav-dropdown hidden sm:block">
+          <a href="voidnexus.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1 inline-flex items-center gap-1">VOIDNEXUS ▾</a>
+          <div class="nav-dropdown-menu">
+            <a href="modules/proxnet.html">ProxNet</a>
+            <a href="architecture.html" class="text-cyan-400">Architecture</a>
+            <a href="security.html">Security</a>
+            <a href="deployment.html">Deployment</a>
+            <a href="api-integrations.html">API &amp; Integrations</a>
+            <a href="demo.html">Request Demo</a>
+          </div>
+        </div>
+        <a href="index.html#custom-saas" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Custom SaaS</a>
+        <a href="contact.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1">Contact</a>
+        <a href="demo.html" class="btn-primary px-4 py-2 rounded-xl font-medium text-sm ml-1">Request Demo</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-2xl p-8 sm:p-10 mb-12 text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">ProxNet Architecture</h1>
+        <p class="text-slate-400 text-lg">Internal structure and flow of the ProxNet system for institutional deployment.</p>
+      </div>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">Architecture Flow</h2>
+        <div class="flex flex-col items-center gap-0 max-w-xs mx-auto">
+          <div class="flow-node rounded-t-xl bg-void-800/60 w-full py-4 px-6 text-center text-white font-medium">Device Registration</div>
+          <div class="text-cyan-400 py-1">↓</div>
+          <div class="flow-node bg-void-800/60 w-full py-4 px-6 text-center text-white font-medium">Identity Verification</div>
+          <div class="text-cyan-400 py-1">↓</div>
+          <div class="flow-node bg-void-800/60 w-full py-4 px-6 text-center text-white font-medium">Access Authorization</div>
+          <div class="text-cyan-400 py-1">↓</div>
+          <div class="flow-node bg-void-800/60 w-full py-4 px-6 text-center text-white font-medium">Activity Monitoring</div>
+          <div class="text-cyan-400 py-1">↓</div>
+          <div class="flow-node rounded-b-xl bg-void-800/60 w-full py-4 px-6 text-center text-white font-medium">Administrative Dashboard</div>
+        </div>
+      </section>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">System Architecture</h2>
+        <p class="text-slate-400 leading-relaxed">ProxNet is built as a set of interacting modules that work together to provide identity-based access and device management. The core gateway handles device registration and authentication; the identity layer verifies users and devices; the policy engine applies access rules; and the monitoring layer records activity for audit and analytics. All components communicate over secure channels and share a consistent data model for institutional consistency.</p>
+      </section>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">Module Structure</h2>
+        <p class="text-slate-400 leading-relaxed mb-4">Core modules include: <strong class="text-slate-300">Device Registry</strong> for onboarding and lifecycle; <strong class="text-slate-300">Identity Verification</strong> for user and device binding; <strong class="text-slate-300">Access Control</strong> for policy enforcement; <strong class="text-slate-300">Activity Logging</strong> for audit trails; and <strong class="text-slate-300">Admin Dashboard</strong> for configuration and reporting. Each module can be deployed in line with your infrastructure and scaled independently where needed.</p>
+      </section>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">Integration Flow</h2>
+        <p class="text-slate-400 leading-relaxed">ProxNet interacts with other campus systems through a well-defined API and optional sync agents. ERP and LMS platforms can consume identity and attendance data; biometric or card systems can feed into ProxNet for unified verification. Integration is designed to be controlled and auditable, so institutions retain visibility over data flow between ProxNet and existing software.</p>
+      </section>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">Security Layers</h2>
+        <p class="text-slate-400 leading-relaxed">Identity verification uses multi-factor options and device binding to reduce impersonation. All sensitive data is encrypted in transit and at rest. The system supports device fingerprinting and continuous monitoring so anomalous access can be flagged. Audit logging ensures every material action is recorded for transparency and compliance.</p>
+      </section>
+
+      <section class="glass rounded-2xl p-8 sm:p-10 mb-8">
+        <h2 class="text-2xl font-bold text-white mb-4">Scalability</h2>
+        <p class="text-slate-400 leading-relaxed">The platform is designed to scale from single buildings to large, multi-site institutions. Components can be distributed across gateways and servers; the identity and policy layers support high throughput and caching. Deployment options include cloud-hosted, on-premise, and hybrid models so institutions can choose the right fit for their size and governance requirements.</p>
+      </section>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="products.html" class="btn-primary px-6 py-3 rounded-xl font-medium">View Products</a>
+        <a href="demo.html" class="border border-white/20 px-6 py-3 rounded-xl font-medium text-slate-300 hover:text-white hover:border-white/30 transition-colors">Request Demo</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <div class="max-w-6xl mx-auto">
+      <div class="glass rounded-2xl p-8 flex flex-col items-center gap-6 text-center">
+        <div class="flex items-center gap-2">
+          <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-8 w-auto object-contain opacity-90" loading="lazy" />
+          <span class="text-slate-400 text-sm">OBSCURON VOID LABS LLP</span>
+        </div>
+        <p class="text-slate-500 text-sm">India</p>
+        <nav class="flex flex-wrap justify-center gap-4 text-sm">
+          <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Home</a>
+          <a href="index.html#about" class="text-slate-400 hover:text-white transition-colors">About Obscuron</a>
+          <a href="index.html#products" class="text-slate-400 hover:text-white transition-colors">Products</a>
+          <a href="voidnexus.html" class="text-slate-400 hover:text-white transition-colors">VOIDNEXUS</a>
+          <a href="contact.html" class="text-slate-400 hover:text-white transition-colors">Contact</a>
+        </nav>
+      </div>
+      <div class="glass rounded-2xl mt-6 p-4 text-center text-slate-500 text-sm">© <span id="year"></span> OBSCURON VOID LABS LLP.</div>
+    </div>
+  </footer>
+  <div id="cursor-overlay" aria-hidden="true"><div id="cursor-dot"></div></div>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="js/void-cursor.js"></script>
+</body>
+</html>

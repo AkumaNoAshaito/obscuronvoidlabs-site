@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="description" content="Obscuron Void Labs LLP – Deep-tech innovation lab. Intelligent systems, secure infrastructure, and next-generation automation. ProxNet: BLE and Face ID attendance. Enterprise-ready." />
-  <title>Obscuron Void Labs LLP | Deep-Tech Innovation Lab · Smart Attendance &amp; Infrastructure</title>
+  <meta name="description" content="OBSCURON VOID LABS LLP – India-based deep-tech innovation lab. Scalable digital infrastructure, VOIDNEXUS campus platform, and built-to-order SaaS for institutions." />
+  <title>OBSCURON VOID LABS | Deep-Tech Software Systems for Modern Institutions</title>
   <!-- Canonical URL: update when deploying (e.g. https://obscuronvoidlabs.com) -->
   <link rel="canonical" href="https://obscuronvoidlabs.com/" />
   <!-- Favicon: multi-size and Apple touch -->
@@ -12,17 +12,16 @@
   <link rel="icon" href="Obscuron Void Labs Logo.png" type="image/png" sizes="192x192" />
   <link rel="apple-touch-icon" href="Obscuron Void Labs Logo.png" />
   <link rel="preload" href="Obscuron Void Labs Logo.png" as="image" />
-  <link rel="preload" href="Proxnet Logo.jpg" as="image" />
   <!-- Open Graph / social preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Obscuron Void Labs LLP | Deep-Tech Innovation Lab" />
-  <meta property="og:description" content="Intelligent systems, secure infrastructure, and next-generation automation. ProxNet: BLE and Face ID attendance. Enterprise-ready." />
+  <meta property="og:title" content="OBSCURON VOID LABS | Deep-Tech Software Systems for Modern Institutions" />
+  <meta property="og:description" content="India-based deep-tech innovation lab. Scalable digital platforms, VOIDNEXUS, and built-to-order SaaS for institutions." />
   <meta property="og:image" content="https://obscuronvoidlabs.com/Obscuron%20Void%20Labs%20Logo.png" />
   <meta property="og:url" content="https://obscuronvoidlabs.com/" />
-  <meta property="og:site_name" content="Obscuron Void Labs LLP" />
+  <meta property="og:site_name" content="OBSCURON VOID LABS" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Obscuron Void Labs LLP | Deep-Tech Innovation Lab" />
-  <meta name="twitter:description" content="Intelligent systems, secure infrastructure, and next-generation automation." />
+  <meta name="twitter:title" content="OBSCURON VOID LABS | Deep-Tech Software Systems for Modern Institutions" />
+  <meta name="twitter:description" content="India-based deep-tech innovation lab. VOIDNEXUS and built-to-order SaaS for institutions." />
   <meta name="twitter:image" content="https://obscuronvoidlabs.com/Obscuron%20Void%20Labs%20Logo.png" />
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -44,15 +43,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/void-theme.css" />
   <!-- Organization structured data (JSON-LD) for Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Obscuron Void Labs LLP",
+    "name": "OBSCURON VOID LABS LLP",
     "url": "https://obscuronvoidlabs.com",
     "logo": "https://obscuronvoidlabs.com/Obscuron%20Void%20Labs%20Logo.png",
-    "description": "Deep-tech innovation lab. Intelligent systems, secure infrastructure, and next-generation automation. ProxNet: BLE and Face ID attendance.",
+    "description": "OBSCURON VOID LABS LLP – India-based deep-tech innovation lab. Scalable digital platforms and built-to-order SaaS for institutions.",
     "sameAs": [
       "https://www.linkedin.com/company/obscuronvoidlabs",
       "https://github.com/AkumaNoAshaito/obscuronvoidlabs-site"
@@ -65,23 +65,9 @@
   }
   </script>
   <style>
-    /* ===== Base & smooth scroll ===== */
-    html { scroll-behavior: smooth; }
+    /* ===== Base (bg-void + cursor from css/void-theme.css) ===== */
+    html, body { background-color: #050508; }
     body { font-family: 'Outfit', system-ui, sans-serif; }
-
-    /* ===== Background: dark gradient + subtle grid (premium depth) ===== */
-    .bg-void {
-      background-color: #050508;
-      background-image:
-        radial-gradient(ellipse 100% 60% at 50% -10%, rgba(34, 211, 238, 0.04), transparent 55%),
-        radial-gradient(ellipse 70% 50% at 85% 50%, rgba(167, 139, 250, 0.03), transparent 50%),
-        linear-gradient(180deg, transparent 0%, rgba(5, 5, 8, 1) 100%);
-    }
-    .bg-grid {
-      background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-      background-size: 64px 64px;
-    }
 
     /* ===== Glassmorphism cards ===== */
     .glass {
@@ -167,70 +153,40 @@
     .nav-glass a:hover {
       opacity: 1;
     }
-
-    /* ===== Void cursor: black hole as actual cursor (desktop only) ===== */
-    @media (hover: hover) and (pointer: fine) {
-      body.void-cursor-active {
-        cursor: none;
-      }
-      body.void-cursor-active * {
-        cursor: none !important;
-      }
-    }
-    @media (hover: none) or (pointer: coarse) {
-      #void-layer,
-      #cursor-overlay { display: none !important; }
-    }
-    #void-layer {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-    #cursor-overlay {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-      pointer-events: none;
-    }
-    #cursor-dot {
-      position: fixed;
+    .nav-dropdown { position: relative; }
+    .nav-dropdown .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
       left: 0;
-      top: 0;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #151520, #050508 60%);
-      box-shadow:
-        0 0 0 1px rgba(34, 211, 238, 0.4),
-        0 0 20px rgba(34, 211, 238, 0.25),
-        0 0 40px rgba(167, 139, 250, 0.15),
-        inset 0 0 12px rgba(0, 0, 0, 0.8);
-      transform: translate(-50%, -50%);
-      will-change: transform;
-      transition: width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease;
-      pointer-events: none;
+      margin-top: 4px;
+      min-width: 200px;
+      padding: 8px 0;
+      background: rgba(15, 15, 24, 0.95);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      z-index: 60;
     }
-    body.void-cursor-active #cursor-dot.hover {
-      width: 32px;
-      height: 32px;
-      box-shadow:
-        0 0 0 1px rgba(34, 211, 238, 0.6),
-        0 0 30px rgba(34, 211, 238, 0.4),
-        0 0 60px rgba(167, 139, 250, 0.2),
-        inset 0 0 16px rgba(0, 0, 0, 0.8);
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
-    body.void-cursor-active #cursor-dot.cursor-text {
-      width: 14px;
-      height: 14px;
-      box-shadow:
-        0 0 0 1px rgba(34, 211, 238, 0.3),
-        0 0 12px rgba(34, 211, 238, 0.2),
-        inset 0 0 8px rgba(0, 0, 0, 0.8);
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      color: rgb(148, 163, 184);
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+    .nav-dropdown-menu a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
     }
     #cursor-particles {
       position: fixed;
@@ -671,7 +627,7 @@
     <div class="ovl-splash__glow" aria-hidden="true"></div>
     <div class="ovl-splash__energy" aria-hidden="true"></div>
     <div class="ovl-splash__inner">
-      <img id="ovl-splash-logo" class="ovl-splash__logo" src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" />
+      <img id="ovl-splash-logo" class="ovl-splash__logo" src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" />
     </div>
   </div>
   <script>
@@ -727,18 +683,29 @@
 
   <!-- ==================== NAVBAR ==================== -->
   <header class="fixed top-0 left-0 right-0 z-50 nav-glass">
-    <nav class="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 h-16 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-2.5 text-base font-medium brand-name transition-colors">
-        <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-7 w-auto object-contain" />
-        <span class="hidden sm:inline tracking-wide">Obscuron Void Labs</span>
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-2">
+      <a href="#hero" class="flex items-center gap-2 text-base font-medium text-white hover:text-cyan-400/90 transition-colors">
+        <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-6 w-auto object-contain" />
+        <span class="hidden sm:inline tracking-wide">OBSCURON VOID LABS</span>
       </a>
-      <div class="flex items-center gap-1 sm:gap-8">
-        <a href="#about" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">About</a>
-        <a href="#products" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Products</a>
-        <a href="#use-cases" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Use Cases</a>
-        <a href="#current-stage" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Current Stage</a>
-        <a href="#why-us" class="hidden sm:inline text-sm text-slate-500 hover:text-slate-200 transition-colors py-2">Why Us</a>
-        <a href="#early-access" class="text-sm btn-primary px-5 py-2.5 rounded-xl font-medium ml-2">Early Access</a>
+      <div class="flex items-center gap-1 sm:gap-3 flex-wrap justify-end text-sm">
+        <a href="#hero" class="hidden sm:inline text-slate-400 hover:text-white transition-colors py-2 px-1">Home</a>
+        <a href="#about" class="hidden sm:inline text-slate-400 hover:text-white transition-colors py-2 px-1">About Obscuron</a>
+        <a href="#products" class="hidden sm:inline text-slate-400 hover:text-white transition-colors py-2 px-1">Products</a>
+        <div class="nav-dropdown hidden sm:block">
+          <a href="voidnexus.html" class="text-slate-400 hover:text-white transition-colors py-2 px-1 inline-flex items-center gap-1">VOIDNEXUS <span aria-hidden="true">▾</span></a>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="modules/proxnet.html" role="menuitem">ProxNet</a>
+            <a href="architecture.html" role="menuitem">Architecture</a>
+            <a href="security.html" role="menuitem">Security</a>
+            <a href="deployment.html" role="menuitem">Deployment</a>
+            <a href="api-integrations.html" role="menuitem">API &amp; Integrations</a>
+            <a href="demo.html" role="menuitem">Request Demo</a>
+          </div>
+        </div>
+        <a href="#custom-saas" class="hidden sm:inline text-slate-400 hover:text-white transition-colors py-2 px-1">Custom SaaS</a>
+        <a href="contact.html" class="hidden sm:inline text-slate-400 hover:text-white transition-colors py-2 px-1">Contact</a>
+        <a href="demo.html" class="text-sm btn-primary px-4 py-2 rounded-xl font-medium ml-1">Request Demo</a>
       </div>
     </nav>
   </header>
@@ -770,27 +737,27 @@
         </svg>
       </div>
       <div class="relative z-10 max-w-3xl mx-auto">
-        <p class="animate-in text-slate-500 text-xs font-medium tracking-[0.2em] uppercase mb-8">Deep-tech · India</p>
+        <p class="animate-in text-slate-500 text-xs font-medium tracking-[0.2em] uppercase mb-8">DEEP-TECH • INDIA</p>
         <div class="hero-title-singularity mb-8">
-          <h1 id="hero-title" class="sr-only">Obscuron Void Labs</h1>
+          <h1 id="hero-title" class="sr-only">OBSCURON VOID LABS</h1>
           <img
             src="Obscuron Void Labs Logo.png"
-            alt="Obscuron Void Labs"
+            alt="OBSCURON VOID LABS"
             class="hero-main-logo"
             loading="eager"
           />
         </div>
-        <p class="animate-in delay-2 mt-8 text-xl sm:text-2xl text-slate-400 font-light leading-relaxed">
+        <p class="animate-in delay-2 mt-8 text-xl sm:text-2xl text-white font-light leading-relaxed">
           Building intelligent systems, secure infrastructure, and next-generation automation.
         </p>
-        <p class="animate-in delay-2 mt-6 text-slate-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        <p class="animate-in delay-2 mt-6 text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
           We are a deep-tech innovation lab focused on future-ready infrastructure, secure systems, and vision-driven solutions for enterprises and institutions.
         </p>
         <div class="animate-in delay-3 mt-14 flex flex-wrap justify-center gap-4">
-          <a href="#products" class="btn-primary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">
+          <a href="#products" class="btn-secondary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">
             View Products
           </a>
-          <a href="#early-access" class="btn-secondary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">
+          <a href="demo.html" class="btn-primary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">
             Join Early Access
           </a>
         </div>
@@ -800,16 +767,16 @@
     <!-- ==================== ABOUT ==================== -->
     <section id="about" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">About Us</h2>
         <div class="glass rounded-2xl p-8 sm:p-10 text-slate-300 space-y-5 text-lg leading-relaxed">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2">About Us</h2>
           <p>
-            <strong class="text-white">Obscuron Void Labs LLP</strong> is an India-based deep-tech innovation lab. We build <strong class="text-cyan-400/90">intelligent systems and secure infrastructure</strong>—the foundational layer for next-generation automation and enterprise-ready solutions.
+            <strong class="text-white">OBSCURON VOID LABS LLP</strong> is an India-based deep-tech innovation lab focused on building scalable digital platforms and intelligent software systems.
           </p>
           <p>
-            Our focus is long-term: scalable architecture, robust security, and vision-driven product development. We work with enterprises and institutions who want infrastructure that is reliable, adaptable, and built for the future.
+            Our work centers around practical, high-impact systems that improve operational efficiency for institutions. We focus on clean architecture, long-term scalability, and thoughtful product design.
           </p>
           <p>
-            We combine deep-tech rigor with a practical approach—delivering innovation that integrates cleanly and scales with your ambitions.
+            Our flagship platform, <strong class="text-cyan-400/90">VOIDNEXUS</strong>, is designed to simplify and digitize campus operations while reducing administrative workload.
           </p>
         </div>
       </div>
@@ -818,208 +785,130 @@
     <!-- ==================== PRODUCTS ==================== -->
     <section id="products" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 text-center">Products &amp; SaaS</h2>
-        <p class="text-slate-400 text-center max-w-2xl mx-auto mb-14">Attendance, access control, management platforms, and built-to-order SaaS—engineered for reliability and scale.</p>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Product 1: ProxNet (Flagship) -->
-          <article class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col">
-            <div class="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium mb-3">
-              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              Flagship · Early Beta
-            </div>
-            <div class="proxnet-product-logo-wrap">
-              <img src="Proxnet Logo.jpg" alt="ProxNet" class="proxnet-product-logo" width="180" height="48" loading="lazy" />
-            </div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">ProxNet</h3>
-            <p class="text-slate-400 mb-6 flex-grow">
-              A <strong class="text-slate-300">smart attendance and access platform</strong> using BLE (Bluetooth Low Energy) and Face ID verification. BLE detects proximity and presence; face recognition confirms identity. Contactless, automated, and designed to prevent proxy attendance and time fraud.
-            </p>
-            <ul class="space-y-2 text-slate-400 text-sm mb-8">
-              <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> BLE-based automatic check-in</li>
-              <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Face recognition for authentication</li>
-              <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Real-time attendance &amp; fraud prevention</li>
-              <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Scalable cloud dashboard, mobile-first</li>
-            </ul>
-            <p class="text-slate-500 text-xs mb-4">Currently onboarding pilot customers. Focused on reliability and usability.</p>
-            <div class="flex flex-wrap gap-3">
-              <a href="#use-cases" class="btn-primary px-5 py-2.5 rounded-lg font-medium text-sm text-white">Learn More</a>
-              <a href="#early-access" class="btn-secondary px-5 py-2.5 rounded-lg font-medium text-sm text-white">Join Beta</a>
-            </div>
-          </article>
-
-          <!-- Product 2: Management Platform -->
-          <article class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col">
-            <div class="inline-flex items-center gap-2 text-violet-400 text-sm font-medium mb-4">
-              <span class="w-2 h-2 rounded-full bg-violet-400"></span>
-              Management Platform
-            </div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">Management Platform (Built-to-Order)</h3>
-            <p class="text-slate-400 mb-6 flex-grow">
-              A fully customizable management platform designed and built for each client’s unique business workflow. We develop tailored solutions for franchise, payments, operations, and verification based on specific requirements. Our approach focuses on <strong class="text-slate-300">flexibility, scalability, and long-term adaptability</strong>—ensuring your system evolves with your business.
-            </p>
-            <ul class="space-y-2 text-slate-400 text-sm mb-4">
-              <li class="flex items-center gap-2"><span class="text-violet-400">→</span> Custom-built for each client’s workflow</li>
-              <li class="flex items-center gap-2"><span class="text-violet-400">→</span> Modular architecture for easy expansion</li>
-              <li class="flex items-center gap-2"><span class="text-violet-400">→</span> Payment, verification, and operational automation</li>
-              <li class="flex items-center gap-2"><span class="text-violet-400">→</span> Scalable infrastructure for growing businesses</li>
-              <li class="flex items-center gap-2"><span class="text-violet-400">→</span> Secure, cloud-first and enterprise-ready</li>
-            </ul>
-            <p class="text-slate-500 text-sm italic mb-8">Each deployment is uniquely engineered to match the client’s business model and operational goals.</p>
-            <div class="flex flex-wrap gap-3">
-              <a href="#early-access" class="btn-primary px-5 py-2.5 rounded-lg font-medium text-sm text-white">Request Demo</a>
-            </div>
-          </article>
-          
-          <!-- Product 3: SaaS (Built-To-Order) -->
-          <article class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col">
-            <div class="inline-flex items-center gap-2 text-emerald-400 text-sm font-medium mb-4">
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-              SaaS · Built-To-Order
-            </div>
-            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">Custom SaaS (Built-To-Order)</h3>
-            <p class="text-slate-400 mb-6 flex-grow">
-              End-to-end <strong class="text-slate-300">SaaS products engineered from scratch</strong> for your specific use case—internal tools, customer portals, or full-scale platforms. We design, build, and operate the stack so you can focus on the business, not the infrastructure.
-            </p>
-            <ul class="space-y-2 text-slate-400 text-sm mb-4">
-              <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Built-to-order SaaS for your domain</li>
-              <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Multi-tenant or single-tenant architectures</li>
-              <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Opinionated, secure cloud infrastructure</li>
-              <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Long-term roadmap and scaling in mind</li>
-              <li class="flex items-center gap-2"><span class="text-emerald-400">→</span> Co-designed with your team’s workflows</li>
-            </ul>
-            <p class="text-slate-500 text-sm italic mb-8">Ideal for teams who need a product-grade SaaS, not just a one-off tool.</p>
-            <div class="flex flex-wrap gap-3">
-              <a href="#early-access" class="btn-secondary px-5 py-2.5 rounded-lg font-medium text-sm text-white">Discuss Your SaaS Idea</a>
-            </div>
-          </article>
+        <div class="glass rounded-2xl p-8 sm:p-10 mb-12 text-center">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Product Ecosystem</h2>
+          <p class="text-slate-400 text-lg max-w-2xl mx-auto">OBSCURON VOID LABS builds modular digital infrastructure systems designed for institutions and organizations.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ==================== USE CASES FOR PROXNET ==================== -->
-    <section id="use-cases" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 text-center">Use Cases for ProxNet</h2>
-        <p class="text-slate-400 text-center max-w-2xl mx-auto mb-14">Where BLE and face-verified attendance makes a practical difference.</p>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="glass rounded-xl p-6 hover:border-cyan-500/20 transition-colors border border-white/5">
-            <h3 class="font-semibold text-white mb-2">Educational institutions</h3>
-            <p class="text-slate-400 text-sm">Schools and colleges: automatic check-in, proxy prevention, and real-time attendance for staff and students.</p>
-          </div>
-          <div class="glass rounded-xl p-6 hover:border-cyan-500/20 transition-colors border border-white/5">
-            <h3 class="font-semibold text-white mb-2">Corporate offices</h3>
-            <p class="text-slate-400 text-sm">Offices and enterprises: contactless access, presence verification, and audit-ready attendance records.</p>
-          </div>
-          <div class="glass rounded-xl p-6 hover:border-cyan-500/20 transition-colors border border-white/5">
-            <h3 class="font-semibold text-white mb-2">Warehouses &amp; factories</h3>
-            <p class="text-slate-400 text-sm">Shift-based and security-sensitive environments: reliable in/out tracking and identity verification at the gate.</p>
-          </div>
-          <div class="glass rounded-xl p-6 hover:border-cyan-500/20 transition-colors border border-white/5">
-            <h3 class="font-semibold text-white mb-2">Multi-location businesses</h3>
-            <p class="text-slate-400 text-sm">Franchises and distributed workforces: one dashboard, multiple sites, consistent policy and reporting.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== CURRENT STAGE ==================== -->
-    <section id="current-stage" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Current Stage</h2>
-        <div class="glass rounded-2xl p-8 sm:p-10 text-slate-300 space-y-4 text-lg leading-relaxed text-left">
-          <p>
-            We are in <strong class="text-white">early beta</strong>. ProxNet is live with a small set of pilot customers; we are focused on stability, usability, and feedback before a wider rollout.
-          </p>
-          <p>
-            We are <strong class="text-cyan-400/90">looking for pilot partners</strong>—schools, offices, or multi-location teams—who want accurate, fraud-resistant attendance and are open to working closely with us during the beta.
-          </p>
-          <p>
-            We are <strong class="text-white">open to collaboration</strong>: custom integrations, proof-of-concept deployments, and long-term partnerships. If that fits your needs, get in touch.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== WHY US ==================== -->
-    <section id="why-us" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 text-center">Why Us</h2>
-        <p class="text-slate-400 text-center max-w-2xl mx-auto mb-14">Secure, scalable systems without unnecessary complexity.</p>
-
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="glass rounded-xl p-6 text-center hover:border-cyan-500/20 transition-colors border border-white/5">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-4 text-cyan-400 text-xl font-bold">P</div>
-            <h3 class="font-semibold text-white mb-2">Privacy-First Architecture</h3>
-            <p class="text-slate-400 text-sm">Data and identity handled with clear security boundaries and access control.</p>
+          <article class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col">
+            <div class="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> Product</div>
+            <h3 class="text-xl font-bold text-white mb-2">ProxNet</h3>
+            <p class="text-slate-400 text-sm mb-4 flex-grow">Identity-based access and device management system for institutional networks.</p>
+            <a href="voidnexus.html" class="text-cyan-400 text-sm font-medium hover:underline">Learn more →</a>
+          </article>
+          <article class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col">
+            <div class="inline-flex items-center gap-2 text-violet-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-violet-400"></span> Product</div>
+            <h3 class="text-xl font-bold text-white mb-2">DeviceTrust</h3>
+            <p class="text-slate-400 text-sm mb-4 flex-grow">Device authentication and identity verification layer designed for secure system access.</p>
+            <a href="security.html" class="text-violet-400 text-sm font-medium hover:underline">Learn more →</a>
+          </article>
+          <article class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col">
+            <div class="inline-flex items-center gap-2 text-emerald-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Product</div>
+            <h3 class="text-xl font-bold text-white mb-2">CampusAI</h3>
+            <p class="text-slate-400 text-sm mb-4 flex-grow">AI-driven analytics platform for institutional infrastructure and operational insights.</p>
+            <a href="voidnexus.html" class="text-emerald-400 text-sm font-medium hover:underline">Learn more →</a>
+          </article>
+          <article class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col">
+            <div class="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-cyan-400"></span> Product</div>
+            <h3 class="text-xl font-bold text-white mb-2">VoidSecure</h3>
+            <p class="text-slate-400 text-sm mb-4 flex-grow">Security monitoring and system protection tools for institutional digital infrastructure.</p>
+            <a href="security.html" class="text-cyan-400 text-sm font-medium hover:underline">Learn more →</a>
+          </article>
+          <article class="glass-card rounded-2xl p-6 sm:p-8 flex flex-col sm:col-span-2 lg:col-span-1">
+            <div class="inline-flex items-center gap-2 text-violet-400 text-sm font-medium mb-3"><span class="w-2 h-2 rounded-full bg-violet-400"></span> Product</div>
+            <h3 class="text-xl font-bold text-white mb-2">ProxNet API</h3>
+            <p class="text-slate-400 text-sm mb-4 flex-grow">Integration interface that allows existing institutional systems such as ERP and LMS platforms to connect with ProxNet.</p>
+            <a href="api-integrations.html" class="text-violet-400 text-sm font-medium hover:underline">Learn more →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== VOIDNEXUS ==================== -->
+    <section id="platform" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass rounded-2xl p-8 sm:p-10 text-center">
+          <div class="flex justify-center mb-6">
+            <img src="VoidNexus Logo.png" alt="VOIDNEXUS" class="h-16 sm:h-20 w-auto object-contain" loading="lazy" />
           </div>
-          <div class="glass rounded-xl p-6 text-center hover:border-cyan-500/20 transition-colors border border-white/5">
-            <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mx-auto mb-4 text-violet-400 text-xl font-bold">C</div>
-            <h3 class="font-semibold text-white mb-2">Modern Cloud Stack</h3>
-            <p class="text-slate-400 text-sm">Scalable, resilient infrastructure on proven technologies.</p>
+          <p class="text-slate-400 text-lg mb-2">A modular platform designed to simplify campus operations.</p>
+          <p class="text-slate-500 max-w-2xl mx-auto text-sm mb-8">VOIDNEXUS is a campus operations platform designed to help institutions manage academic workflows, communication, and administrative processes in a single system.</p>
+          <a href="voidnexus.html" class="btn-primary inline-flex px-6 py-3 rounded-xl font-medium text-white">More details →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CUSTOM SAAS ==================== -->
+    <section id="custom-saas" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <article class="glass-card rounded-2xl p-8 sm:p-10 flex flex-col">
+          <div class="inline-flex items-center gap-2 text-emerald-400 text-sm font-medium mb-4">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            SaaS · Built-To-Order
           </div>
-          <div class="glass rounded-xl p-6 text-center hover:border-cyan-500/20 transition-colors border border-white/5 sm:col-span-2 lg:col-span-1">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-4 text-emerald-400 text-xl font-bold">S</div>
-            <h3 class="font-semibold text-white mb-2">Scalable &amp; Secure</h3>
-            <p class="text-slate-400 text-sm">Built to grow with you; security and compliance in mind.</p>
-          </div>
-          <div class="glass rounded-xl p-6 text-center hover:border-cyan-500/20 transition-colors border border-white/5">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-4 text-cyan-400 text-xl font-bold">F</div>
-            <h3 class="font-semibold text-white mb-2">Fast Deployment</h3>
-            <p class="text-slate-400 text-sm">Clear setup, documentation, and support so you can go live quickly.</p>
-          </div>
-          <div class="glass rounded-xl p-6 text-center hover:border-cyan-500/20 transition-colors border border-white/5">
-            <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center mx-auto mb-4 text-violet-400 text-xl font-bold">A</div>
-            <h3 class="font-semibold text-white mb-2">Startup Agility</h3>
-            <p class="text-slate-400 text-sm">We iterate fast and work closely with early customers to refine the product.</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Custom SaaS (Built-To-Order)</h2>
+          <p class="text-slate-400 mb-6 flex-grow">
+            End-to-end <strong class="text-slate-300">SaaS products engineered from scratch</strong> for your specific use case—internal tools, customer portals, or full-scale platforms. We design, build, and operate the stack so you can focus on the business, not the infrastructure.
+          </p>
+          <ul class="space-y-2 text-slate-400 text-sm mb-6">
+            <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Built-to-order SaaS for your domain</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Multi-tenant or single-tenant architectures</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Opinionated, secure cloud infrastructure</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Long-term roadmap and scaling in mind</li>
+            <li class="flex items-center gap-2"><span class="text-cyan-400">→</span> Co-designed with your team's workflows</li>
+          </ul>
+          <a href="contact.html" class="btn-primary px-5 py-2.5 rounded-lg font-medium text-sm text-white inline-block w-fit">Discuss Your SaaS Idea</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section id="request-demo" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="glass rounded-2xl p-8 sm:p-12 text-center">
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Work with OBSCURON VOID LABS</h2>
+          <p class="text-slate-400 mb-10">If your institution or organization is looking to modernize its software systems, we would be happy to discuss how we can help.</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="contact.html" class="btn-primary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">Contact Us</a>
+            <a href="demo.html" class="btn-secondary px-8 py-3.5 rounded-xl font-medium text-white inline-flex items-center gap-2 text-base">Request Demo</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== EARLY ACCESS / WAITLIST ==================== -->
-    <section id="early-access" class="section-reveal relative py-24 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Early Access</h2>
-        <p class="text-slate-400 mb-10">Get early access to ProxNet beta, product updates, and pilot partnership inquiries.</p>
-
-        <form class="glass rounded-2xl p-8 sm:p-10 text-left" action="#" method="post" id="waitlist-form">
-          <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@company.com"
-              required
-              class="input-void flex-1 px-4 py-3 rounded-lg text-white placeholder-slate-500"
-            />
-            <button type="submit" class="btn-primary px-6 py-3 rounded-lg font-medium text-white whitespace-nowrap">
-              Join Waitlist
-            </button>
-          </div>
-          <p class="mt-3 text-slate-500 text-xs">We use your email only for product updates and early-access or pilot inquiries. No spam.</p>
-        </form>
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="section-reveal relative py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass rounded-2xl p-8 sm:p-10 text-center">
+          <h2 class="text-2xl font-bold text-white mb-3">Contact</h2>
+          <p class="text-slate-400 text-sm mb-4">Use our <a href="contact.html" class="text-cyan-400 hover:underline">contact form</a> to get in touch.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
+
+
+<!-- ==================== FOOTER ==================== -->
     <footer class="relative py-12 px-4 sm:px-6 lg:px-8 border-t border-white/5">
-      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-4">
-          <img src="Obscuron Void Labs Logo.png" alt="Obscuron Void Labs" class="h-8 w-auto object-contain opacity-90" loading="lazy" />
-          <span class="text-slate-400 text-sm">
-            <a href="mailto:admin@obscuronvoidlabs.com" class="text-cyan-400/90 hover:text-cyan-400 transition-colors">admin@obscuronvoidlabs.com</a>
-          </span>
+      <div class="max-w-6xl mx-auto">
+        <div class="glass rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-6 text-center">
+          <div class="flex items-center gap-2">
+            <img src="Obscuron Void Labs Logo.png" alt="OBSCURON VOID LABS" class="h-8 w-auto object-contain opacity-90" loading="lazy" />
+            <span class="text-slate-400 text-sm">OBSCURON VOID LABS LLP</span>
+          </div>
+          <p class="text-slate-500 text-sm">India</p>
+          <nav class="flex flex-wrap justify-center gap-4 text-sm">
+            <a href="#hero" class="text-slate-400 hover:text-white transition-colors">Home</a>
+            <a href="#about" class="text-slate-400 hover:text-white transition-colors">About Obscuron</a>
+            <a href="#products" class="text-slate-400 hover:text-white transition-colors">Products</a>
+            <a href="voidnexus.html" class="text-slate-400 hover:text-white transition-colors">VOIDNEXUS</a>
+            <a href="#custom-saas" class="text-slate-400 hover:text-white transition-colors">Custom SaaS</a>
+            <a href="contact.html" class="text-slate-400 hover:text-white transition-colors">Contact</a>
+          </nav>
         </div>
-        <div class="flex items-center gap-6">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn">LinkedIn</a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">GitHub</a>
+        <div class="glass rounded-2xl mt-6 p-4 text-center text-slate-500 text-sm">
+          © <span id="year"></span> OBSCURON VOID LABS LLP.
         </div>
-      </div>
-      <div class="max-w-6xl mx-auto mt-6 pt-6 border-t border-white/5 text-center text-slate-500 text-sm">
-        © <span id="year"></span> Obscuron Void Labs LLP. All rights reserved.
       </div>
     </footer>
   </main>
@@ -1032,29 +921,26 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const emailInput = document.getElementById('email');
-      const email = emailInput ? emailInput.value : '';
-
-      try {
-        const response = await fetch('/api/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
-        });
-
-        if (response.ok) {
-          alert('Successfully joined the waitlist!');
-        } else {
-          alert('Something went wrong. Try again.');
+    var waitlistForm = document.getElementById('waitlist-form');
+    if (waitlistForm) {
+      waitlistForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var emailInput = document.getElementById('email');
+        var email = emailInput ? emailInput.value : '';
+        try {
+          var response = await fetch('/api/waitlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+          });
+          if (response.ok) alert('Successfully joined the waitlist!');
+          else alert('Something went wrong. Try again.');
+        } catch (err) {
+          console.error(err);
+          alert('Network error.');
         }
-      } catch (err) {
-        console.error(err);
-        alert('Network error.');
-      }
-    });
+      });
+    }
   </script>
   <!-- ===== Brand: section reveal + hero parallax ===== -->
   <script>
